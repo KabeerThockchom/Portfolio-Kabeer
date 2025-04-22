@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
+import { XIcon, BriefcaseIcon, CodeIcon, FileTextIcon, MailIcon, HeartIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
@@ -11,14 +11,22 @@ import {
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import { AnimatedBackground } from '@/components/ui/animated-background'
+import { ContactForm } from '@/components/ui/contact-form'
+import { TextEffect } from '@/components/ui/text-effect'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
   BLOG_POSTS,
   EMAIL,
   SOCIAL_LINKS,
+  EDUCATION,
+  SKILLS,
 } from './data'
+
+type TabType = 'about' | 'projects' | 'experience' | 'blog' | 'contact'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -124,147 +132,326 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const [activeTab, setActiveTab] = useState<TabType>('about')
+
   return (
-    <motion.main
-      className="space-y-24"
+    <motion.div
+      className="flex h-[calc(100vh-180px)] flex-col"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
     >
-      <motion.section
+      {/* Tabs Navigation */}
+      <motion.div
+        className="mb-3 flex justify-center"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
-          </p>
+        <div className="flex rounded-lg bg-zinc-100 p-0.5 dark:bg-zinc-800/70">
+          <button
+            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'about' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            onClick={() => setActiveTab('about')}
+          >
+            <CodeIcon className="mr-1.5 h-3.5 w-3.5" /> About
+          </button>
+          <button
+            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            onClick={() => setActiveTab('projects')}
+          >
+            <CodeIcon className="mr-1.5 h-3.5 w-3.5" /> Projects
+          </button>
+          <button
+            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            onClick={() => setActiveTab('experience')}
+          >
+            <BriefcaseIcon className="mr-1.5 h-3.5 w-3.5" /> Experience
+          </button>
+          <button
+            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'blog' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            onClick={() => setActiveTab('blog')}
+          >
+            <FileTextIcon className="mr-1.5 h-3.5 w-3.5" /> Blog
+          </button>
+          <button
+            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'contact' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            onClick={() => setActiveTab('contact')}
+          >
+            <MailIcon className="mr-1.5 h-3.5 w-3.5" /> Contact
+          </button>
         </div>
-      </motion.section>
+      </motion.div>
 
-      <motion.section
+      {/* Tab Content */}
+      <motion.div
+        className="flex-1 overflow-hidden rounded-lg bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
-              </div>
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
+        {/* About Tab */}
+        {activeTab === 'about' && (
+          <div className="h-full overflow-auto pb-1 pt-1">
+            <div>
+              <div className="w-full">
+                <h3 className="mb-2 text-base font-medium">About Me</h3>
+                
+                <motion.p 
+                  className="mb-2 border-l-2 border-zinc-300 pl-2 text-xs italic text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
+                  My mission is to bridge the gap between cutting-edge AI technology and practical business solutions, creating products that not only showcase technical excellence but genuinely solve real-world problems.
+                </motion.p>
+                
+                <p className="mb-2 text-xs text-zinc-600 dark:text-zinc-400">
+                  Driving AI innovation from concept to completion. Translating customer insights into impactful products across startup and enterprise environments.
                 </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-        <div className="flex flex-col space-y-2">
-          {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={job.id}
-            >
-              <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
+                
+                <div className="mt-2">
+                  <h4 className="mb-1 flex items-center text-xs font-medium">
+                    <HeartIcon className="mr-1 h-3 w-3 text-rose-500" /> 
+                    Passions & Interests
+                  </h4>
+                  
+                  <div className="space-y-0.5">
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                      Fascinated by the intersection of AI, business, and human-centered design.
+                    </p>
+                    
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                      Outside of work, I'm a dog lover, tea enthusiast, and avid hiker.
+                    </p>
+                    
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                      I believe in building technology that enhances human capabilities rather than replacing them.
                     </p>
                   </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
+                  
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {['AI/ML', 'Economics', 'Product Dev / Mgmt', 'Dogs', 'Tea', 'Hiking', 'Movies'].map((tag) => (
+                      <span 
+                        key={tag} 
+                        className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </a>
-          ))}
-        </div>
-      </motion.section>
+            </div>
+          </div>
+        )}
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
-              >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
+        {/* Projects Tab */}
+        {activeTab === 'projects' && (
+          <div className="h-full overflow-auto pb-1 pt-1">
+            <h3 className="mb-3 text-lg font-medium">Selected Projects</h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {PROJECTS.map((project) => (
+                <div key={project.name} className="space-y-1">
+                  <div className="relative rounded-lg bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                    <ProjectVideo src={project.video} />
+                  </div>
+                  <div className="px-1">
+                    <a
+                      className="font-base group relative inline-block text-sm font-[450] text-zinc-900 dark:text-zinc-50"
+                      href={project.link}
+                      target="_blank"
+                    >
+                      {project.name}
+                      <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
+                    </a>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                      {project.description.length > 150 
+                        ? `${project.description.substring(0, 150)}...` 
+                        : project.description}
+                    </p>
+                  </div>
                 </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
-        </div>
-      </motion.section>
+              ))}
+            </div>
+          </div>
+        )}
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
-        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-        </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
-      </motion.section>
-    </motion.main>
+        {/* Experience Tab */}
+        {activeTab === 'experience' && (
+          <div className="h-full overflow-auto pb-1 pt-1">
+            <div className="grid grid-cols-1 gap-3 xl:grid-cols-3">
+              {/* Work Experience Section */}
+              <div className="xl:col-span-2">
+                <h3 className="mb-2 text-base font-medium">Work Experience</h3>
+                <div className="space-y-3">
+                  {WORK_EXPERIENCE.map((job) => (
+                    <motion.div
+                      key={job.id}
+                      className="relative overflow-hidden rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="mb-1 flex flex-col justify-between space-y-1 sm:flex-row sm:items-center sm:space-y-0">
+                        <div>
+                          <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                            {job.title}
+                          </h4>
+                          <div className="flex flex-col sm:flex-row sm:items-center">
+                            <a 
+                              href={job.link}
+                              target="_blank"
+                              className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                            >
+                              {job.company}
+                            </a>
+                            <span className="hidden text-zinc-400 sm:mx-2 sm:inline">&middot;</span>
+                            <span className="text-sm text-zinc-500 dark:text-zinc-500">{job.location}</span>
+                          </div>
+                        </div>
+                        <div className="text-sm font-light text-zinc-500 dark:text-zinc-400">
+                          {job.start} - {job.end}
+                        </div>
+                      </div>
+                      
+                      <ul className="mt-1 space-y-0.5 text-xs">
+                        {job.accomplishments.map((accomplishment, index) => (
+                          <li key={index} className="flex items-start">
+                            <span className="mr-2 mt-1 text-xs text-zinc-400">•</span>
+                            <span className="text-zinc-700 dark:text-zinc-300">{accomplishment}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Education and Skills Column */}
+              <div className="space-y-3">
+                {/* Education Section */}
+                <div>
+                  <h3 className="mb-2 text-base font-medium">Education</h3>
+                  <div className="space-y-3">
+                    {EDUCATION.map((edu) => (
+                      <motion.div
+                        key={edu.id}
+                        className="rounded-lg border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-950"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="mb-1 flex justify-between">
+                          <h4 className="font-medium text-zinc-900 dark:text-zinc-100">{edu.school}</h4>
+                          <div className="text-xs text-zinc-500">{edu.start} - {edu.end}</div>
+                        </div>
+                        <div className="text-sm text-zinc-700 dark:text-zinc-300">{edu.degree}</div>
+                        <div className="text-xs text-zinc-500">{edu.location}</div>
+                        
+                        {edu.focus && (
+                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                            <span className="font-medium">Focus:</span> {edu.focus}
+                          </div>
+                        )}
+                        
+                        {edu.gpa && (
+                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                            <span className="font-medium">GPA:</span> {edu.gpa}
+                          </div>
+                        )}
+                        
+                        {edu.minors && edu.minors.length > 0 && (
+                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                            <span className="font-medium">Minors:</span> {edu.minors.join(', ')}
+                          </div>
+                        )}
+                        
+                        {edu.honors && edu.honors.length > 0 && (
+                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                            <span className="font-medium">Honors:</span> {edu.honors.join(', ')}
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Skills Section */}
+                <div>
+                  <h3 className="mb-2 text-base font-medium">Skills</h3>
+                  <div className="space-y-3">
+                    {SKILLS.map((skillCategory, index) => (
+                      <motion.div
+                        key={index}
+                        className="rounded-lg border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-950"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                      >
+                        <h4 className="mb-1 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                          {skillCategory.category}
+                        </h4>
+                        <div className="flex flex-wrap gap-1">
+                          {skillCategory.items.map((skill, skillIndex) => (
+                            <span 
+                              key={skillIndex}
+                              className="whitespace-nowrap rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Blog Tab */}
+        {activeTab === 'blog' && (
+          <div className="h-full overflow-auto pb-1 pt-1">
+            <h3 className="mb-3 text-lg font-medium">Blog</h3>
+            <div className="flex flex-col space-y-0">
+              <AnimatedBackground
+                enableHover
+                className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
+                transition={{
+                  type: 'spring',
+                  bounce: 0,
+                  duration: 0.2,
+                }}
+              >
+                {BLOG_POSTS.map((post) => (
+                  <Link
+                    key={post.uid}
+                    className="-mx-3 rounded-xl px-3 py-2"
+                    href={post.link}
+                    data-id={post.uid}
+                  >
+                    <div className="flex flex-col space-y-1">
+                      <h4 className="text-sm font-normal dark:text-zinc-100">
+                        {post.title}
+                      </h4>
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                        {post.description}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </AnimatedBackground>
+            </div>
+          </div>
+        )}
+
+        {/* Contact Tab */}
+        {activeTab === 'contact' && (
+          <div className="h-full overflow-auto pb-1 pt-1">
+            <h3 className="mb-3 text-lg font-medium">Contact Me</h3>
+            <ContactForm />
+          </div>
+        )}
+      </motion.div>
+    </motion.div>
   )
 }
