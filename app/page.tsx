@@ -136,7 +136,7 @@ export default function Personal() {
 
   return (
     <motion.div
-      className="flex h-[calc(100vh-180px)] flex-col"
+      className="flex h-full flex-col"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
@@ -147,33 +147,33 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <div className="flex rounded-lg bg-zinc-100 p-0.5 dark:bg-zinc-800/70">
+        <div className="flex rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800/70">
           <button
-            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'about' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'about' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('about')}
           >
             <CodeIcon className="mr-1.5 h-3.5 w-3.5" /> About
           </button>
           <button
-            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('projects')}
           >
             <CodeIcon className="mr-1.5 h-3.5 w-3.5" /> Projects
           </button>
           <button
-            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('experience')}
           >
             <BriefcaseIcon className="mr-1.5 h-3.5 w-3.5" /> Experience
           </button>
           <button
-            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'blog' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'blog' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('blog')}
           >
             <FileTextIcon className="mr-1.5 h-3.5 w-3.5" /> Blog
           </button>
           <button
-            className={`flex items-center rounded-md px-2 py-1 text-xs font-medium transition-all ${activeTab === 'contact' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'contact' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('contact')}
           >
             <MailIcon className="mr-1.5 h-3.5 w-3.5" /> Contact
@@ -186,16 +186,17 @@ export default function Personal() {
         className="flex-1 overflow-hidden rounded-lg bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        style={{ height: 'calc(100vh - 120px)' }}
       >
         {/* About Tab */}
         {activeTab === 'about' && (
-          <div className="h-full overflow-auto pb-1 pt-1">
+          <div className="h-full overflow-auto pb-1 pt-1 pr-1">
             <div>
               <div className="w-full">
                 <h3 className="mb-2 text-base font-medium">About Me</h3>
                 
                 <motion.p 
-                  className="mb-2 border-l-2 border-zinc-300 pl-2 text-xs italic text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
+                  className="mb-3 border-l-2 border-zinc-300 pl-3 text-sm italic text-zinc-600 dark:border-zinc-700 dark:text-zinc-400"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -203,35 +204,35 @@ export default function Personal() {
                   My mission is to bridge the gap between cutting-edge AI technology and practical business solutions, creating products that not only showcase technical excellence but genuinely solve real-world problems.
                 </motion.p>
                 
-                <p className="mb-2 text-xs text-zinc-600 dark:text-zinc-400">
+                <p className="mb-3 text-sm text-zinc-600 dark:text-zinc-400">
                   Driving AI innovation from concept to completion. Translating customer insights into impactful products across startup and enterprise environments.
                 </p>
                 
-                <div className="mt-2">
-                  <h4 className="mb-1 flex items-center text-xs font-medium">
-                    <HeartIcon className="mr-1 h-3 w-3 text-rose-500" /> 
+                <div className="mt-4">
+                  <h4 className="mb-2 flex items-center text-sm font-medium">
+                    <HeartIcon className="mr-2 h-4 w-4 text-rose-500" /> 
                     Passions & Interests
                   </h4>
                   
-                  <div className="space-y-0.5">
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                  <div className="space-y-2">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
                       Fascinated by the intersection of AI, business, and human-centered design.
                     </p>
                     
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
                       Outside of work, I'm a dog lover, tea enthusiast, and avid hiker.
                     </p>
                     
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
                       I believe in building technology that enhances human capabilities rather than replacing them.
                     </p>
                   </div>
                   
-                  <div className="mt-2 flex flex-wrap gap-1">
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {['AI/ML', 'Economics', 'Product Dev / Mgmt', 'Dogs', 'Tea', 'Hiking', 'Movies'].map((tag) => (
                       <span 
                         key={tag} 
-                        className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                        className="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
                       >
                         {tag}
                       </span>
@@ -245,7 +246,7 @@ export default function Personal() {
 
         {/* Projects Tab */}
         {activeTab === 'projects' && (
-          <div className="h-full overflow-auto pb-1 pt-1">
+          <div className="h-full overflow-auto pb-1 pt-1 pr-1">
             <h3 className="mb-3 text-lg font-medium">Selected Projects</h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
               {PROJECTS.map((project) => (
@@ -262,7 +263,7 @@ export default function Personal() {
                       {project.name}
                       <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
                     </a>
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
                       {project.description.length > 150 
                         ? `${project.description.substring(0, 150)}...` 
                         : project.description}
@@ -276,7 +277,7 @@ export default function Personal() {
 
         {/* Experience Tab */}
         {activeTab === 'experience' && (
-          <div className="h-full overflow-auto pb-1 pt-1">
+          <div className="h-full overflow-auto pb-1 pt-1 pr-1">
             <div className="grid grid-cols-1 gap-3 xl:grid-cols-3">
               {/* Work Experience Section */}
               <div className="xl:col-span-2">
@@ -410,7 +411,7 @@ export default function Personal() {
 
         {/* Blog Tab */}
         {activeTab === 'blog' && (
-          <div className="h-full overflow-auto pb-1 pt-1">
+          <div className="h-full overflow-auto pb-1 pt-1 pr-1">
             <h3 className="mb-3 text-lg font-medium">Blog</h3>
             <div className="flex flex-col space-y-0">
               <AnimatedBackground
@@ -446,7 +447,7 @@ export default function Personal() {
 
         {/* Contact Tab */}
         {activeTab === 'contact' && (
-          <div className="h-full overflow-auto pb-1 pt-1">
+          <div className="h-full overflow-auto pb-1 pt-1 pr-1">
             <h3 className="mb-3 text-lg font-medium">Contact Me</h3>
             <ContactForm />
           </div>

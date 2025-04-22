@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'BottegaAI -Customer AI for Restaurants',
     description: 'AI-powered voice agent revolutionizing restaurant operations by handling phone interactions, order placement, and personalization. Seamlessly integrates with POS systems, supports 50+ languages, and manages the entire customer journey. Streamlines operations while enhancing customer experience through AI-driven efficiency. Tech Stack: React, Twilio, AWS EC2, Anthropic Claude 3.5 Haiku, Stripe, Docker, LangSmith',
-    link: 'https://genaiccdeploy.azurewebsites.net/',
+    link: '/Users/kabeerthockchom/Desktop/newportfolio/nim/app/ChatGPT Image Apr 22, 2025, 06_11_47 PM.png',
     video:
       'https://res.cloudinary.com/dslghpuru/video/upload/v1745352254/restaurauntAI_alafcl.mp4',
     id: 'project3',
@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
   {
     name: 'Generative UI Banking POC',
     description: 'Created a dynamic UI generation system AI chatbot for a banking client using LangGraph.js, GPT-4o-mini, and Vercel AI SDK. Developed real-time component rendering within an enhanced chat interface, delivering contextually appropriate visual elements during customer conversations. Tech Stack: React, LangGraph.js, GPT-4o-mini, Vercel AI SDK, Docker, LangSmith',
-    link: 'https://eygenuiexp.vercel.app/',
+    link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353337/eygenui_hv5rv9.mov',
     video:
       'https://res.cloudinary.com/dslghpuru/video/upload/v1745353337/eygenui_hv5rv9.mov',
     id: 'project6',
