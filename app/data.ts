@@ -47,9 +47,9 @@ export const PROJECTS: Project[] = [
     id: 'project2',
   },
   {
-    name: 'BottegaAI -Customer AI for Restaurants',
+    name: 'BottegaAI - Customer AI for Restaurants',
     description: 'AI-powered voice agent revolutionizing restaurant operations by handling phone interactions, order placement, and personalization. Seamlessly integrates with POS systems, supports 50+ languages, and manages the entire customer journey. Streamlines operations while enhancing customer experience through AI-driven efficiency. Tech Stack: React, Twilio, AWS EC2, Anthropic Claude 3.5 Haiku, Stripe, Docker, LangSmith',
-    link: '/Users/kabeerthockchom/Desktop/newportfolio/nim/app/ChatGPT Image Apr 22, 2025, 06_11_47 PM.png',
+    link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745352254/restaurauntAI_alafcl.mp4',
     video:
       'https://res.cloudinary.com/dslghpuru/video/upload/v1745352254/restaurauntAI_alafcl.mp4',
     id: 'project3',
