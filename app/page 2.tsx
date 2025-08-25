@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
 import { XIcon, BriefcaseIcon, CodeIcon, FileTextIcon, MailIcon, HeartIcon, DownloadIcon, MessageSquareIcon, UserIcon, FolderIcon } from 'lucide-react'
-import ReactMarkdown from 'react-markdown'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
@@ -169,61 +168,8 @@ function MagneticSocialLink({
   )
 }
 
-type ChatMessage = {
-  role: 'user' | 'assistant'
-  content: string
-}
-
 export default function Personal() {
   const [activeTab, setActiveTab] = useState<TabType>('about')
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
-    {
-      role: 'assistant',
-      content: "👋 Hi! I'm an AI assistant that knows all about Kabeer's background, experience, and skills. Ask me anything about his resume!"
-    }
-  ])
-  const [chatInput, setChatInput] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-
-  const sendMessage = async (message: string) => {
-    if (!message.trim() || isLoading) return
-
-    const userMessage: ChatMessage = { role: 'user', content: message }
-    setChatMessages(prev => [...prev, userMessage])
-    setChatInput('')
-    setIsLoading(true)
-
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to send message')
-      }
-
-      const data = await response.json()
-      const assistantMessage: ChatMessage = { role: 'assistant', content: data.response }
-      setChatMessages(prev => [...prev, assistantMessage])
-    } catch (error) {
-      console.error('Error sending message:', error)
-      const errorMessage: ChatMessage = { 
-        role: 'assistant', 
-        content: 'Sorry, I encountered an error. Please try again.' 
-      }
-      setChatMessages(prev => [...prev, errorMessage])
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleSuggestedQuestion = (question: string) => {
-    sendMessage(question)
-  }
 
   return (
     <motion.div
@@ -249,7 +195,7 @@ export default function Personal() {
             className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('projects')}
           >
-            <FolderIcon className="mr-1.5 h-3.5 w-3.5" /> Projects
+            <CodeIcon className="mr-1.5 h-3.5 w-3.5" /> Projects
           </button>
           <button
             className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
@@ -635,81 +581,34 @@ export default function Personal() {
                 <div className="h-full min-h-[400px] rounded-lg bg-zinc-50/40 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
                   <div className="flex h-full flex-col">
                     {/* Chat Messages */}
-                    <div className="flex-1 space-y-3 overflow-auto max-h-80">
-                      {chatMessages.map((message, index) => (
-                        <div
-                          key={index}
-                          className={`rounded-lg p-3 ${
-                            message.role === 'assistant'
-                              ? 'bg-zinc-100 dark:bg-zinc-800'
-                              : 'bg-blue-100 ml-8 dark:bg-blue-900/50'
-                          }`}
-                        >
-                          {message.role === 'assistant' ? (
-                            <div className="text-sm text-zinc-600 dark:text-zinc-400 prose prose-sm max-w-none prose-headings:text-zinc-800 dark:prose-headings:text-zinc-200 prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-strong:text-zinc-800 dark:prose-strong:text-zinc-200 prose-ul:text-zinc-600 dark:prose-ul:text-zinc-400 prose-li:text-zinc-600 dark:prose-li:text-zinc-400">
-                              <ReactMarkdown>{message.content}</ReactMarkdown>
-                            </div>
-                          ) : (
-                            <p className="text-sm text-zinc-600 dark:text-zinc-400 whitespace-pre-wrap">
-                              {message.content}
-                            </p>
-                          )}
-                        </div>
-                      ))}
-                      {isLoading && (
-                        <div className="rounded-lg bg-zinc-100 p-3 dark:bg-zinc-800">
-                          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                            Thinking...
-                          </p>
-                        </div>
-                      )}
+                    <div className="flex-1 space-y-3 overflow-auto">
+                      <div className="rounded-lg bg-zinc-100 p-3 dark:bg-zinc-800">
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                          👋 Hi! I'm an AI assistant that knows all about Kabeer's background, experience, and skills. Ask me anything about his resume!
+                        </p>
+                      </div>
                     </div>
                     
                     {/* Chat Input */}
                     <div className="mt-4 space-y-2">
-                      <form
-                        onSubmit={(e) => {
-                          e.preventDefault()
-                          sendMessage(chatInput)
-                        }}
-                        className="flex gap-2"
-                      >
+                      <div className="flex gap-2">
                         <input
                           type="text"
-                          value={chatInput}
-                          onChange={(e) => setChatInput(e.target.value)}
                           placeholder="Ask about Kabeer's experience, skills, projects..."
                           className="flex-1 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm placeholder-zinc-500 focus:border-zinc-400 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder-zinc-400 dark:focus:border-zinc-500"
-                          disabled={isLoading}
                         />
-                        <button 
-                          type="submit"
-                          disabled={isLoading || !chatInput.trim()}
-                          className="rounded-lg bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                          {isLoading ? 'Sending...' : 'Send'}
+                        <button className="rounded-lg bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-colors">
+                          Send
                         </button>
-                      </form>
+                      </div>
                       <div className="flex flex-wrap gap-2">
-                        <button 
-                          onClick={() => handleSuggestedQuestion("What's his experience at EY?")}
-                          disabled={isLoading}
-                          className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors disabled:opacity-50"
-                        >
+                        <button className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors">
                           What's his experience at EY?
                         </button>
-                        <button 
-                          onClick={() => handleSuggestedQuestion("Tell me about his AI projects")}
-                          disabled={isLoading}
-                          className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors disabled:opacity-50"
-                        >
+                        <button className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors">
                           Tell me about his AI projects
                         </button>
-                        <button 
-                          onClick={() => handleSuggestedQuestion("What are his technical skills?")}
-                          disabled={isLoading}
-                          className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors disabled:opacity-50"
-                        >
+                        <button className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors">
                           What are his technical skills?
                         </button>
                       </div>
