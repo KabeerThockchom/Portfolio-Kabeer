@@ -326,7 +326,7 @@ export default function Personal() {
                   </div>
                   
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {['AI/ML', 'Economics', 'Product Dev / Mgmt', 'Dogs', 'Tea', 'Hiking', 'Movies'].map((tag) => (
+                    {['GenAI Explainability', 'LLM Evals', 'RAG Systems', 'AI Alignment', 'Dogs', 'Tea', 'Hiking', 'Prompt Engineering'].map((tag) => (
                       <span 
                         key={tag} 
                         className="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
