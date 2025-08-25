@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
     description: 'AI-powered Text2SQL solution that seamlessly converts natural language into precise SQL queries, empowering business teams to unlock insights effortlessly. Built-in adaptive learning for query accuracy, customizable database documentation for pinpoint searches, 100+ chart types for rich visualizations, and versatile data export options. Transform your data interaction and decision-making process today. Tech Stack: React, OpenAI gpt-4o-mini, SQLite, Plotly, FastAPI, Docker, LangSmith',
     link: 'https://text2sql.fly.dev',
     video:
-      'https://res.cloudinary.com/dslghpuru/video/upload/v1745351268/text2sqlkabeer.mov',
+      'https://drive.google.com/file/d/1dUvFzEmn0e5xz2SsDUUBPUYxhTH9TyOY/view?usp=drive_link',
     id: 'project1',
   },
   {
@@ -43,15 +43,15 @@ export const PROJECTS: Project[] = [
     description: 'EY Voice is a groundbreaking AI-powered tool that revolutionizes customer interaction analysis. By leveraging advanced AI and LLMs, it extracts actionable insights from diverse communication channels, driving productivity, automation, and digital transformation across enterprises. Tech Stack: React, Azure Serverless Functions, Azure VM, Azure MSSQL, AzureOpenAI gpt-4o, FastAPI, Docker, LangSmith',
     link: 'https://genaiccdeploy.azurewebsites.net/',
     video:
-      'https://res.cloudinary.com/dslghpuru/video/upload/v1745352258/eyvoice_jceshm.mov',
+      'https://drive.google.com/file/d/156tYjIsuSYuKiqOXkwKdfgZ1l5xfi7S1/view?usp=drive_link',
     id: 'project2',
   },
   {
     name: 'BottegaAI - Customer AI for Restaurants',
     description: 'AI-powered voice agent revolutionizing restaurant operations by handling phone interactions, order placement, and personalization. Seamlessly integrates with POS systems, supports 50+ languages, and manages the entire customer journey. Streamlines operations while enhancing customer experience through AI-driven efficiency. Tech Stack: React, Twilio, AWS EC2, Anthropic Claude 3.5 Haiku, Stripe, Docker, LangSmith',
-    link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745352254/restaurauntAI_alafcl.mp4',
+    link: 'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     video:
-      'https://res.cloudinary.com/dslghpuru/video/upload/v1745352254/restaurauntAI_alafcl.mp4',
+      'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     id: 'project3',
   },
   {
@@ -59,37 +59,30 @@ export const PROJECTS: Project[] = [
     description: 'Completely Local Agentic RAG system empowering EY consultants with personalized knowledge search across multiple file formats (PPT, Word, PDF, Excel). Agentic and on edge knowledge search with built-in privacy controls and precision guardrails, delivering accurate generative responses with transparent in-line citations. Transforms information retrieval while enhancing consultant productivity through AI-driven knowledge management. Tech Stack: React, LangGraph, Qdrant, Ollama, Docker, LangSmith',
     link: 'https://www.youtube.com/watch?v=Ra3PvUVTPc4',
     video:
-      'https://res.cloudinary.com/dslghpuru/video/upload/v1745352617/EYLAR_g4rxpb.mp4',
+      'https://drive.google.com/file/d/1iYCLIs7553I11xkgzTnHVHdfGPERA6lj/view?usp=drive_link',
     id: 'project4',
-  },
-  {
-    name: 'DocIntel - Knowledge Search & Automation for Teachers',
-    description: 'AI-powered education platform for knowledge search and workflow automation for teachers. Featuring advanced handwriting recognition via vision LLM models and seamless integration with Google Drive with robust authentication and session management. Enables teachers to create automated workflows for grading, worksheet generation, and curriculum planning. Features a school-wide knowledge search assistant that provides transparent search results with source attribution, empowering educators to leverage institutional knowledge efficiently. Tech Stack: React, Google Drive API, Anthropic Claude 3.5 Sonnet, OAuth 2.0, Qdrant, FastAPI, LangSmith',
-    link: 'https://www.youtube.com/watch?v=VimZ6YngrFI',
-    video:'https://res.cloudinary.com/dslghpuru/video/upload/v1745352616/Doc_Intel_Demo_qyxjbe.mp4',
-    id: 'project5',
   },
   {
     name: 'Generative UI Banking POC',
     description: 'Created a dynamic UI generation system AI chatbot for a banking client using LangGraph.js, GPT-4o-mini, and Vercel AI SDK. Developed real-time component rendering within an enhanced chat interface, delivering contextually appropriate visual elements during customer conversations. Tech Stack: React, LangGraph.js, GPT-4o-mini, Vercel AI SDK, Docker, LangSmith',
     link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353337/eygenui_hv5rv9.mov',
     video:
-      'https://res.cloudinary.com/dslghpuru/video/upload/v1745353337/eygenui_hv5rv9.mov',
-    id: 'project6',
+      'https://drive.google.com/file/d/1PrIoQKUO4N8YIwn-y2EsHkNyfvm8xgDG/view?usp=drive_link',
+    id: 'project5',
   },
   {
     name: 'AI Monopoly Arena',
     description: 'Play Monopoly against leading LLM models from OpenAI, Anthropic, and Gemini. Engage in trade, negotiation, and strategy to win the game. Tech Stack: HTML, CSS, JavaScript',
     link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353572/mono_zg8pzk.mov',
-    video: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353572/mono_zg8pzk.mov',
-    id: 'project7',
+    video: 'https://drive.google.com/file/d/1EHut11qbjjMfP9NFr_PehOyNb5ul_bfK/view?usp=drive_link',
+    id: 'project6',
   },
   {
     name: 'ETF AI',
     description: 'AI-powered financial platform revolutionizing ETF data analysis by processing 10K+ daily queries with 95% accuracy. Supports real-time data visualization, and manages complex financial insights through natural language. Streamlines investment decision-making while enhancing user experience through AI-driven financial intelligence. Tech Stack: React, Snowflake, Vanna AI, OpenAI gpt-4o-mini, Docker, LangSmith',
     link: 'https://prod.quantie.com/',
-    video:'https://res.cloudinary.com/dslghpuru/video/upload/v1745352744/quantie_yrbjte.mov',
-    id: 'project8',
+    video: 'https://drive.google.com/file/d/1m6AdQYB-GxmgYwFx4Fp04wxOTGIfVmyP/view?usp=drive_link',
+    id: 'project7',
   }
 ]
 
@@ -118,7 +111,7 @@ type Skill = {
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Ernst and Young LLP',
-    title: 'AI & Data Consultant',
+    title: 'Senior Applied AI Engineer',
     start: 'October 2023',
     end: 'Present',
     location: 'San Francisco, CA',
