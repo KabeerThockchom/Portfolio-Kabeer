@@ -108,29 +108,52 @@ type Skill = {
   items: string[];
 };
 
+type Certification = {
+  name: string;
+  issuer: string;
+  year: string;
+  id: string;
+};
+
+type Award = {
+  name: string;
+  issuer: string;
+  date: string;
+  description?: string;
+  id: string;
+};
+
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Ernst and Young LLP',
     title: 'Senior Applied AI Engineer',
-    start: 'October 2023',
+    start: 'July 2025',
     end: 'Present',
     location: 'San Francisco, CA',
     link: 'https://www.ey.com/en_mt/events/agenda-themes/data-and-ai',
     accomplishments: [
-      'Led development of EY Voice, an enterprise-grade AI-powered call center dashboard using NLP, LLM entity tagging, semantic search, and AI analytics for a Fortune 500 financial client that drove a 45% reduction in call resolution times and secured $1.2M in funding. Presented at NVIDIA GTC 2025.',
-      'Leading a full-cycle enterprise AI search initiative—from discovery to production—by architecting a proprietary orchestrator layer in AWS and LangChain that seamlessly scales across multiple teams and projects.',
-      'Implemented enterprise AI agents for customer service automation, enterprise search, and operational efficiency. Spearheaded a robust AI testing and evaluation framework to measure LLM performance, reliability, and trustworthiness.',
-      'Generated over 50,000 call center transcripts using OpenAI GPT-3.5/4, Anthropic Claude 3 Opus, and open-source models. Developed prompt engineering techniques for batch generation and storage in MSSQL.',
-      'Built a semantic search product for nuanced call querying by implementing cosine similarity, TF-IDF algorithms, and AI-tagged metadata filtering using HuggingFace, Azure OpenAI, and Qdrant.',
-      'Developed a compliance product featuring entity tagging and named entity recognition (NER), reducing required manpower by 45%.',
-      'Created an AI-generated feedback product using advanced SQL functions and NLP-extracted insights, improving agent performance by 25% across 10 metrics.',
-      'Led cross-functional projects in generative AI (RAG, vector search) to monitor real-time sentiment across 20K+ daily interactions.',
-      'Spearheaded the implementation of dual-model forecasting for a $3.2B portfolio, improving accuracy by 40%.',
-      'Managed global teams (15 engineers across 3 locations), optimizing sprint cycles by 35% and accelerating velocity by 40%.',
-      'Improved average handling time for an $8T AUM wealth management client by 30%, processing 1M+ daily interactions.',
-      'Developed an AI transformation framework that raised CSAT by 25%, creating new standards for AI governance and enterprise rollout.'
+      'Lead engineering projects and teams pertaining to experimentation, implementation, and optimization of revenue driving workflows by employing machine learning, generative AI and data engineering pipelines deployed in optimized cloud workflows.'
     ],
     id: 'work1',
+  },
+  {
+    company: 'Ernst and Young LLP',
+    title: 'AI & Data Consultant',
+    start: 'October 2023',
+    end: 'July 2025',
+    location: 'San Francisco, CA',
+    link: 'https://www.ey.com/en_mt/events/agenda-themes/data-and-ai',
+    accomplishments: [
+      'Leading a full-cycle enterprise AI search initiative—from discovery to production—by architecting a proprietary orchestrator layer and data processing pipelines in AWS that seamlessly scales across multiple teams and projects enabling knowledge search as a service for chat, generative search and IVR channels with built in feedback mechanism loops for model distillation and FAQ generation pipelines for a $10T AUM wealth management client.',
+      'Led development of EY Voice, an enterprise-grade AI-powered call center as a service application with features NLP, LLM entity tagging, semantic search, text to sql, and data analytics for a Fortune 500 financial clients that drove a 45% reduction in call resolution times and a 75% automation of support ticket issues secured $1.2M in funding. Presented at NVIDIA GTC 2025.',
+      'Implemented enterprise AI agents for customer service automation for customer banking clients, increasing agent efficiency and self-efficacy scores by more than 80% and streamline the on-boarding of new agents from 2 weeks to 24 h with a built-in robust AI testing and evaluation framework to measure LLM performance, reliability, and precision.',
+      'Generated over 200,000 call center transcripts using OpenAI GPT-3.5/4 and open-source models and Developed pipelines, prompt engineering configurations that enable large-scale data generation using best practices of batch generation, prompt caching that allows database creation in MSSQL.',
+      'Built a semantic search product for nuanced call querying by implementing cosine similarity, TF-IDF algorithms, and AI-tagged metadata filtering using HuggingFace, Azure OpenAI, and Qdrant enabling root cause analysis of call reasons and post-call in line highlighting intent, compliance, complaints, and competitor analysis.',
+      'Developed a compliance product featuring entity tagging and named entity recognition (NER), reducing the required manpower by 90% and report creation time from 2 weeks to 5 minutes.',
+      'Spearheaded the implementation and model validation/assessment of dual-model forecasting for a $3.2B enterprise gift card portfolio, improving accuracy by 40%.',
+      'Managed global teams (15 engineers in 3 locations), optimizing sprint cycles by 35% and accelerating velocity by 40%.'
+    ],
+    id: 'work1a',
   },
   {
     company: 'Stealth Startup',
@@ -142,8 +165,8 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     accomplishments: [
       'Developed proprietary customer service AI agent (Bottega AI) achieving 40% reduction in order processing time and 25% increase in upselling through intelligent restaurant ordering system.',
       'Architected natural language data analysis platform for a leading ETF firm (Talk2Data AI) processing 10K+ daily financial queries with 95% accuracy.',
-      'Built enterprise-grade Local Agentic RAG system reducing latency by 60% and improving response accuracy by 35% through optimized architecture.',
-      'Oversaw end-to-end project delivery, including scope definition, timeline management, and risk mitigation, ensuring seamless integration with client engineering teams.'
+      'Built enterprise-grade Local Agentic RAG Application (EYLAR) reducing latency by 60% and improving response accuracy by 35% through optimized architecture.',
+      'Designed distributed data processing workflows using Apache Spark for batch analytics, implementing efficient ETL pipelines that reduced processing time by 43% while improving data quality.'
     ],
     id: 'work2',
   },
@@ -217,15 +240,15 @@ export const EDUCATION: Education[] = [
 export const SKILLS: Skill[] = [
   {
     category: 'Programming Languages',
-    items: ['Python', 'TypeScript', 'SQL', 'STATA', 'R']
+    items: ['Python', 'SQL', 'Scala (basic)', 'Java (basic)', 'TypeScript', 'STATA', 'R']
   },
   {
-    category: 'Web Technologies',
-    items: ['React', 'Next.js', 'Streamlit', 'Flask', 'WebSockets', 'FastAPI']
+    category: 'Big Data Technologies',
+    items: ['Apache Spark', 'Hadoop (basics)', 'ETL/ELT Pipelines', 'Data Orchestration', 'Kafka (basics)']
   },
   {
-    category: 'Database Systems',
-    items: ['PostgreSQL', 'Qdrant', 'MSSQL', 'MongoDB']
+    category: 'Database and Vector Database Systems',
+    items: ['PostgreSQL', 'Qdrant', 'MSSQL', 'MongoDB', 'Snowflake']
   },
   {
     category: 'Data Science & Machine Learning',
@@ -233,15 +256,19 @@ export const SKILLS: Skill[] = [
   },
   {
     category: 'Cloud Technologies',
-    items: ['Azure', 'Google Cloud Platform', 'AWS', 'Fly.io', 'Render', 'Vercel']
+    items: ['AWS (Lambda, EC2, S3)', 'Azure (Functions, ML/AI Studio)', 'Google Cloud Platform', 'Fly.io', 'Render', 'Vercel']
+  },
+  {
+    category: 'Web Technologies',
+    items: ['React', 'Next.js', 'Streamlit', 'Flask', 'WebSockets', 'FastAPI']
   },
   {
     category: 'DevOps & Version Control',
     items: ['Github', 'Git', 'Docker', 'Postman', 'CI/CD']
   },
   {
-    category: 'Specialized Areas',
-    items: ['AI Agents', 'Product Management', 'Full-Stack Web App Dev', 'Agile/Scrum']
+    category: 'Specialized Area',
+    items: ['AI Agents', 'Data Modeling', 'Solution Architecture', 'Full-Stack WebApp Dev', 'Agile/Scrum']
   },
   {
     category: 'Other Tools & Technologies',
@@ -284,5 +311,56 @@ export const SOCIAL_LINKS: SocialLink[] = [
     link: 'https://www.linkedin.com/in/kabeerthockchom',
   }
 ]
+
+export const CERTIFICATIONS: Certification[] = [
+  {
+    name: 'Microsoft AI-900 Azure AI Fundamental',
+    issuer: 'Microsoft',
+    year: '2024',
+    id: 'cert1'
+  },
+  {
+    name: 'Microsoft AZ-900 Azure Fundamental',
+    issuer: 'Microsoft',
+    year: '2023',
+    id: 'cert2'
+  },
+  {
+    name: 'DeepLearning.AI Finetuning Large Language Models: Lamini',
+    issuer: 'DeepLearning.AI',
+    year: '2023',
+    id: 'cert3'
+  },
+  {
+    name: 'Project Management Professional (PMP)',
+    issuer: 'Project Management Institute',
+    year: '2024',
+    id: 'cert4'
+  }
+];
+
+export const AWARDS: Award[] = [
+  {
+    name: 'EY Wealth Asset Management Hackathon Winner',
+    issuer: 'Ernst and Young LLP',
+    date: 'February 2025',
+    description: 'Developed proprietary multi-agent platform enabling wealth asset management teams to automate tasks',
+    id: 'award1'
+  },
+  {
+    name: 'March Fund Award',
+    issuer: 'University of California Davis, Letters & Science',
+    date: 'June 2022',
+    description: 'Recognition for student achievements in internships and on-campus impact',
+    id: 'award2'
+  },
+  {
+    name: 'Dean\'s Scholar List',
+    issuer: 'University of California Davis, Letters & Science',
+    date: '2020, 2021, 2022',
+    description: 'Awarded for achieving GPA in the upper 16% of class level and college',
+    id: 'award3'
+  }
+];
 
 export const EMAIL = 'thockchomkabeer@gmail.com'

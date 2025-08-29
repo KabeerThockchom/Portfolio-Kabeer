@@ -73,7 +73,7 @@ export function Footer() {
         <a href="https://github.com/kabeerthockchom" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
             <span>©Kabeer Thockchom.</span>
-            <span>Built with ❤️ by Kabeer Thockchom.</span>
+            <span>Built with ❤️ by Kabeer Thockchom x Claude Code.</span>
           </TextLoop>
         </a>
         <div className="text-xs text-zinc-400">
