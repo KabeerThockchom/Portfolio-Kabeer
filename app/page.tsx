@@ -622,113 +622,135 @@ export default function Personal() {
         {/* Experience Tab */}
         {activeTab === 'experience' && (
           <div className="h-full overflow-auto pb-1 pt-1 pr-1">
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-4">
-              {/* Work Experience Section - Takes more space */}
-              <div className="lg:col-span-3">
-                {/* Image Carousel */}
-                <div className="mb-4">
-                  <h3 className="mb-2 text-base font-medium">Life & Work Journey</h3>
-                  <ImageCarousel onImageClick={setSelectedImage} />
-                </div>
-                <h3 className="mb-2 text-base font-medium">Work Experience</h3>
-                <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
-                  {WORK_EXPERIENCE.map((job) => (
-                    <motion.div
-                      key={job.id}
-                      className="relative overflow-hidden rounded-lg border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-950"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="mb-1 flex flex-col justify-between space-y-1">
-                        <div>
-                          <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                            {job.title}
-                          </h4>
-                          <div className="flex flex-col">
-                            <a 
-                              href={job.link}
-                              target="_blank"
-                              className="text-xs text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                            >
-                              {job.company}
-                            </a>
-                            <div className="flex items-center text-xs text-zinc-500 dark:text-zinc-500">
-                              <span>{job.location}</span>
-                              <span className="mx-2">&middot;</span>
-                              <span>{job.start} - {job.end}</span>
+            {/* Image Carousel */}
+            <div className="mb-6">
+              <h3 className="mb-3 text-lg font-semibold">Life & Work Journey</h3>
+              <ImageCarousel onImageClick={setSelectedImage} />
+            </div>
+
+            {/* Experience Layout - Mobile: Stack, Desktop: Side by side */}
+            <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
+              {/* Work Experience Timeline - Main Content */}
+              <div className="xl:col-span-3">
+                <h3 className="mb-4 text-lg font-semibold">Career Timeline</h3>
+                
+                {/* Timeline Container */}
+                <div className="relative">
+                  {/* Timeline Line */}
+                  <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-zinc-400 to-zinc-600 hidden sm:block"></div>
+                  
+                  {/* Timeline Items */}
+                  <div className="space-y-6">
+                    {WORK_EXPERIENCE.map((job, index) => (
+                      <motion.div
+                        key={job.id}
+                        className="relative"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        {/* Timeline Dot */}
+                        <div className="absolute left-4 w-4 h-4 bg-white border-4 border-blue-500 rounded-full hidden sm:block shadow-lg z-10"></div>
+                        
+                        {/* Experience Card */}
+                        <div className="sm:ml-12 bg-white dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md transition-shadow">
+                          {/* Header */}
+                          <div className="mb-3">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                              <div>
+                                <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                                  {job.title}
+                                </h4>
+                                <a 
+                                  href={job.link}
+                                  target="_blank"
+                                  className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline"
+                                >
+                                  {job.company}
+                                </a>
+                              </div>
+                              <div className="text-right">
+                                <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                                  {job.start} - {job.end}
+                                </div>
+                                <div className="text-sm text-zinc-500 dark:text-zinc-400">
+                                  {job.location}
+                                </div>
+                              </div>
                             </div>
                           </div>
+                          
+                          {/* Accomplishments */}
+                          <div className="space-y-2">
+                            {(expandedJobs.has(job.id) ? job.accomplishments : job.accomplishments.slice(0, 3)).map((accomplishment, index) => (
+                              <div key={index} className="flex items-start">
+                                <div className="w-2 h-2 bg-zinc-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                                  {accomplishment}
+                                </p>
+                              </div>
+                            ))}
+                            
+                            {job.accomplishments.length > 3 && (
+                              <button
+                                onClick={() => toggleJobExpansion(job.id)}
+                                className="mt-2 text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium hover:underline"
+                              >
+                                {expandedJobs.has(job.id) 
+                                  ? 'Show less' 
+                                  : `View ${job.accomplishments.length - 3} more accomplishments`
+                                }
+                              </button>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                      
-                      <ul className="mt-2 space-y-1 text-xs">
-                        {(expandedJobs.has(job.id) ? job.accomplishments : job.accomplishments.slice(0, 3)).map((accomplishment, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="mr-2 mt-0.5 text-xs text-zinc-400">•</span>
-                            <span className="text-zinc-700 dark:text-zinc-300 leading-tight">{accomplishment}</span>
-                          </li>
-                        ))}
-                        {job.accomplishments.length > 3 && (
-                          <li>
-                            <button
-                              onClick={() => toggleJobExpansion(job.id)}
-                              className="text-xs text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline cursor-pointer"
-                            >
-                              {expandedJobs.has(job.id) 
-                                ? 'Show less' 
-                                : `...and ${job.accomplishments.length - 3} more`
-                              }
-                            </button>
-                          </li>
-                        )}
-                      </ul>
-                    </motion.div>
-                  ))}
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </div>
               
-              {/* Education and Skills Column - Condensed */}
-              <div className="space-y-3">
+              {/* Sidebar - Education, Skills, etc. */}
+              <div className="xl:col-span-2 space-y-6">
                 {/* Education Section */}
                 <div>
-                  <h3 className="mb-2 text-sm font-medium">Education</h3>
-                  <div className="space-y-2">
+                  <h3 className="mb-3 text-lg font-semibold">Education</h3>
+                  <div className="space-y-3">
                     {EDUCATION.map((edu) => (
                       <motion.div
                         key={edu.id}
-                        className="rounded-lg border border-zinc-200 bg-white p-2 dark:border-zinc-800 dark:bg-zinc-950"
+                        className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 shadow-sm"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="mb-1">
-                          <h4 className="text-xs font-medium text-zinc-900 dark:text-zinc-100">{edu.school}</h4>
-                          <div className="text-xs text-zinc-500">{edu.start} - {edu.end}</div>
+                        <div className="mb-2">
+                          <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{edu.school}</h4>
+                          <div className="text-sm text-zinc-500 dark:text-zinc-400">{edu.start} - {edu.end}</div>
                         </div>
-                        <div className="text-xs text-zinc-700 dark:text-zinc-300">{edu.degree}</div>
-                        <div className="text-xs text-zinc-500">{edu.location}</div>
+                        <div className="text-sm font-medium text-zinc-800 dark:text-zinc-200 mb-1">{edu.degree}</div>
+                        <div className="text-sm text-zinc-600 dark:text-zinc-400">{edu.location}</div>
                         
                         {edu.focus && (
-                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                          <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                             <span className="font-medium">Focus:</span> {edu.focus}
                           </div>
                         )}
                         
                         {edu.gpa && (
-                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                          <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                             <span className="font-medium">GPA:</span> {edu.gpa}
                           </div>
                         )}
                         
                         {edu.minors && edu.minors.length > 0 && (
-                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                          <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                             <span className="font-medium">Minors:</span> {edu.minors.join(', ')}
                           </div>
                         )}
                         
                         {edu.honors && edu.honors.length > 0 && (
-                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                          <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                             <span className="font-medium">Honors:</span> {edu.honors.join(', ')}
                           </div>
                         )}
@@ -739,24 +761,24 @@ export default function Personal() {
                 
                 {/* Skills Section */}
                 <div>
-                  <h3 className="mb-2 text-sm font-medium">Key Skills</h3>
-                  <div className="space-y-2">
-                    {SKILLS.slice(0, 4).map((skillCategory, index) => (
+                  <h3 className="mb-3 text-lg font-semibold">Key Skills</h3>
+                  <div className="space-y-3">
+                    {SKILLS.slice(0, 6).map((skillCategory, index) => (
                       <motion.div
                         key={index}
-                        className="rounded-lg border border-zinc-200 bg-white p-2 dark:border-zinc-800 dark:bg-zinc-950"
+                        className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 shadow-sm"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
                       >
-                        <h4 className="mb-1 text-xs font-medium text-zinc-900 dark:text-zinc-100">
+                        <h4 className="mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                           {skillCategory.category}
                         </h4>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-2">
                           {(expandedSkills.has(index.toString()) ? skillCategory.items : skillCategory.items.slice(0, 4)).map((skill, skillIndex) => (
                             <span 
                               key={skillIndex}
-                              className="whitespace-nowrap rounded-full bg-zinc-100 px-1.5 py-0.5 text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                              className="whitespace-nowrap rounded-full bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 text-xs font-medium text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700"
                             >
                               {skill}
                             </span>
@@ -764,11 +786,11 @@ export default function Personal() {
                           {skillCategory.items.length > 4 && (
                             <button
                               onClick={() => toggleSkillExpansion(index)}
-                              className="whitespace-nowrap rounded-full bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-600 cursor-pointer"
+                              className="whitespace-nowrap rounded-full bg-blue-50 dark:bg-blue-900/50 px-2.5 py-1 text-xs font-medium text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/70 transition-colors"
                             >
                               {expandedSkills.has(index.toString()) 
                                 ? 'Show less' 
-                                : `+${skillCategory.items.length - 4}`
+                                : `+${skillCategory.items.length - 4} more`
                               }
                             </button>
                           )}
@@ -780,21 +802,19 @@ export default function Personal() {
                 
                 {/* Certifications Section */}
                 <div>
-                  <h3 className="mb-2 text-sm font-medium">Certifications</h3>
-                  <div className="space-y-2">
+                  <h3 className="mb-3 text-lg font-semibold">Certifications</h3>
+                  <div className="space-y-3">
                     {CERTIFICATIONS.map((cert) => (
                       <motion.div
                         key={cert.id}
-                        className="rounded-lg border border-zinc-200 bg-white p-2 dark:border-zinc-800 dark:bg-zinc-950"
+                        className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 shadow-sm"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="mb-1">
-                          <h4 className="text-xs font-medium text-zinc-900 dark:text-zinc-100">{cert.name}</h4>
-                          <div className="text-xs text-zinc-600 dark:text-zinc-400">{cert.issuer}</div>
-                          <div className="text-xs text-zinc-500">{cert.year}</div>
-                        </div>
+                        <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{cert.name}</h4>
+                        <div className="text-sm text-zinc-600 dark:text-zinc-400">{cert.issuer}</div>
+                        <div className="text-sm text-zinc-500 dark:text-zinc-500">{cert.year}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -802,26 +822,24 @@ export default function Personal() {
                 
                 {/* Awards Section */}
                 <div>
-                  <h3 className="mb-2 text-sm font-medium">Honors & Awards</h3>
-                  <div className="space-y-2">
+                  <h3 className="mb-3 text-lg font-semibold">Honors & Awards</h3>
+                  <div className="space-y-3">
                     {AWARDS.map((award) => (
                       <motion.div
                         key={award.id}
-                        className="rounded-lg border border-zinc-200 bg-white p-2 dark:border-zinc-800 dark:bg-zinc-950"
+                        className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950 shadow-sm"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="mb-1">
-                          <h4 className="text-xs font-medium text-zinc-900 dark:text-zinc-100">{award.name}</h4>
-                          <div className="text-xs text-zinc-600 dark:text-zinc-400">{award.issuer}</div>
-                          <div className="text-xs text-zinc-500">{award.date}</div>
-                          {award.description && (
-                            <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-tight">
-                              {award.description}
-                            </p>
-                          )}
-                        </div>
+                        <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{award.name}</h4>
+                        <div className="text-sm text-zinc-600 dark:text-zinc-400 mb-1">{award.issuer}</div>
+                        <div className="text-sm text-zinc-500 dark:text-zinc-500 mb-2">{award.date}</div>
+                        {award.description && (
+                          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                            {award.description}
+                          </p>
+                        )}
                       </motion.div>
                     ))}
                   </div>

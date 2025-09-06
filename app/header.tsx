@@ -112,7 +112,7 @@ export function Header() {
   return (
     <header className="mb-3 flex items-center justify-between">
       <div className="flex items-center gap-4">
-        <div className="group relative h-16 w-16 cursor-pointer overflow-hidden rounded-full border-2 border-zinc-200 transition-all duration-300 hover:scale-110 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
+        <div className="group relative h-20 w-20 cursor-pointer overflow-hidden rounded-full border-2 border-zinc-200 transition-all duration-300 hover:scale-110 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
           <div className="absolute inset-0 z-10 hidden rounded-full bg-black/10 opacity-0 transition-opacity duration-300 group-hover:block group-hover:opacity-100 dark:bg-white/10"></div>
           <Image 
             src="/kabeer.png" 
