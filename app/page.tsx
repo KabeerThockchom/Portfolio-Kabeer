@@ -180,56 +180,56 @@ export default function Personal() {
     >
       {/* Tabs Navigation */}
       <motion.div
-        className="mb-3 flex justify-center"
+        className="mb-3 flex justify-center overflow-x-auto"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <div className="flex rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800/70">
+        <div className="flex rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800/70 min-w-max">
           <button
-            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'about' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'about' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('about')}
           >
-            <CodeIcon className="mr-1.5 h-3.5 w-3.5" /> About
+            <CodeIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> <span className="hidden xs:inline">About</span><span className="xs:hidden">About</span>
           </button>
           <button
-            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('projects')}
           >
-            <CodeIcon className="mr-1.5 h-3.5 w-3.5" /> Projects
+            <CodeIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Projects
           </button>
           <button
-            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('experience')}
           >
-            <BriefcaseIcon className="mr-1.5 h-3.5 w-3.5" /> Experience
+            <BriefcaseIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Experience
           </button>
           <button
-            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'blog' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'blog' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('blog')}
           >
-            <FileTextIcon className="mr-1.5 h-3.5 w-3.5" /> Blog
+            <FileTextIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Blog
           </button>
           <button
-            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'resume' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'resume' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('resume')}
           >
-            <UserIcon className="mr-1.5 h-3.5 w-3.5" /> Resume
+            <UserIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Resume
           </button>
           <button
-            className={`flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-all ${activeTab === 'contact' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'contact' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('contact')}
           >
-            <MailIcon className="mr-1.5 h-3.5 w-3.5" /> Contact
+            <MailIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Contact
           </button>
         </div>
       </motion.div>
 
       {/* Tab Content */}
       <motion.div
-        className="flex-1 overflow-hidden rounded-lg bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+        className="flex-1 overflow-hidden rounded-lg bg-zinc-50/40 p-2 sm:p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
-        style={{ height: 'calc(100vh - 120px)' }}
+        style={{ height: 'calc(100vh - 160px)' }}
       >
         {/* About Tab */}
         {activeTab === 'about' && (
