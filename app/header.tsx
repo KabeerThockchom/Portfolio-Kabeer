@@ -110,50 +110,50 @@ function HeaderSpotifyWidget() {
 
 export function Header() {
   return (
-    <header className="mb-3 flex items-center justify-between">
-      <div className="flex items-center gap-4">
-        <div className="group relative h-20 w-20 cursor-pointer overflow-hidden rounded-full border-2 border-zinc-200 transition-all duration-300 hover:scale-110 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
+    <header className="mb-8 flex items-center justify-between">
+      <div className="flex items-center gap-6">
+        <div className="group relative h-28 w-28 cursor-pointer overflow-hidden rounded-full border-4 border-zinc-200 transition-all duration-300 hover:scale-105 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500 shadow-lg">
           <div className="absolute inset-0 z-10 hidden rounded-full bg-black/10 opacity-0 transition-opacity duration-300 group-hover:block group-hover:opacity-100 dark:bg-white/10"></div>
-          <Image 
-            src="/kabeer.png" 
-            alt="Kabeer Thockchom profile photo" 
-            width={200} 
+          <Image
+            src="/kabeer.png"
+            alt="Kabeer Thockchom profile photo"
+            width={200}
             height={200}
             className="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3"
           />
         </div>
         <div>
-          <Link href="/" className="text-lg font-medium text-black dark:text-white">
+          <Link href="/" className="text-2xl font-bold text-black dark:text-white hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">
             Kabeer Thockchom
           </Link>
           <TextEffect
             as="p"
             preset="fade"
             per="char"
-            className="text-base text-zinc-600 dark:text-zinc-500"
+            className="text-lg text-zinc-600 dark:text-zinc-400 mt-1"
             delay={0.5}
           >
             Senior Applied AI Engineer
           </TextEffect>
-          <div className="mt-4 flex items-center space-x-4">
-            <div className="flex space-x-4">
-              <a 
+          <div className="mt-5 flex items-center space-x-6">
+            <div className="flex space-x-5">
+              <a
                 href="https://github.com/KabeerThockchom"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-600 transition-colors hover:text-orange-500 dark:text-zinc-500 dark:hover:text-orange-400"
+                className="text-zinc-600 transition-all hover:text-orange-500 hover:scale-110 dark:text-zinc-400 dark:hover:text-orange-400"
                 aria-label="GitHub"
               >
-                <GithubIcon size={24} />
+                <GithubIcon size={28} />
               </a>
-              <a 
+              <a
                 href="https://www.linkedin.com/in/kabeerthockchom"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-600 transition-colors hover:text-blue-600 dark:text-zinc-500 dark:hover:text-blue-400"
+                className="text-zinc-600 transition-all hover:text-blue-600 hover:scale-110 dark:text-zinc-400 dark:hover:text-blue-400"
                 aria-label="LinkedIn"
               >
-                <LinkedinIcon size={24} />
+                <LinkedinIcon size={28} />
               </a>
             </div>
             <HeaderSpotifyWidget />
