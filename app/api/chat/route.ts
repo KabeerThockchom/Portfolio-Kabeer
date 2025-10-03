@@ -113,9 +113,9 @@ Guidelines:
           content: message
         }
       ],
-      model: 'llama3-70b-8192',
+      model: 'llama-3.3-70b-versatile',
       temperature: 0.3,
-      max_tokens: 1000,
+      max_tokens: 7000,
     })
 
     const response = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.'
