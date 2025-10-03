@@ -168,8 +168,56 @@ function MagneticSocialLink({
   )
 }
 
+type Message = {
+  role: 'user' | 'assistant'
+  content: string
+}
+
 export default function Personal() {
   const [activeTab, setActiveTab] = useState<TabType>('about')
+  const [messages, setMessages] = useState<Message[]>([])
+  const [input, setInput] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSendMessage = async (messageText?: string) => {
+    const textToSend = messageText || input.trim()
+    if (!textToSend || isLoading) return
+
+    const userMessage: Message = { role: 'user', content: textToSend }
+    setMessages((prev) => [...prev, userMessage])
+    setInput('')
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: textToSend }),
+      })
+
+      const data = await response.json()
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: data.response || 'Sorry, I could not generate a response.',
+      }
+      setMessages((prev) => [...prev, assistantMessage])
+    } catch (error) {
+      const errorMessage: Message = {
+        role: 'assistant',
+        content: 'Sorry, there was an error processing your message.',
+      }
+      setMessages((prev) => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSendMessage()
+    }
+  }
 
   return (
     <motion.div
@@ -578,37 +626,119 @@ export default function Personal() {
                   <MessageSquareIcon className="h-5 w-5" />
                   <h4 className="text-base font-medium">Chat with my Resume</h4>
                 </div>
-                <div className="h-full min-h-[400px] rounded-lg bg-zinc-50/40 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                  <div className="flex h-full flex-col">
+                <div className="flex h-full min-h-[400px] flex-col rounded-lg bg-zinc-50/40 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                  <div className="flex flex-1 flex-col overflow-hidden">
                     {/* Chat Messages */}
-                    <div className="flex-1 space-y-3 overflow-auto">
+                    <div className="flex-1 space-y-3 overflow-y-auto pr-2">
                       <div className="rounded-lg bg-zinc-100 p-3 dark:bg-zinc-800">
                         <p className="text-sm text-zinc-600 dark:text-zinc-400">
                           👋 Hi! I'm an AI assistant that knows all about Kabeer's background, experience, and skills. Ask me anything about his resume!
                         </p>
                       </div>
+
+                      {messages.map((message, index) => (
+                        <div
+                          key={index}
+                          className={`rounded-lg p-3 ${
+                            message.role === 'user'
+                              ? 'ml-8 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
+                              : 'mr-8 bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
+                          }`}
+                        >
+                          <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                        </div>
+                      ))}
+
+                      {isLoading && (
+                        <div className="mr-8 rounded-lg bg-zinc-100 p-3 dark:bg-zinc-800">
+                          <div className="flex items-center gap-2">
+                            <div className="flex gap-1">
+                              <motion.div
+                                className="h-2 w-2 rounded-full bg-zinc-400 dark:bg-zinc-500"
+                                animate={{
+                                  scale: [1, 1.2, 1],
+                                  opacity: [0.5, 1, 0.5],
+                                }}
+                                transition={{
+                                  duration: 1,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                  delay: 0,
+                                }}
+                              />
+                              <motion.div
+                                className="h-2 w-2 rounded-full bg-zinc-400 dark:bg-zinc-500"
+                                animate={{
+                                  scale: [1, 1.2, 1],
+                                  opacity: [0.5, 1, 0.5],
+                                }}
+                                transition={{
+                                  duration: 1,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                  delay: 0.2,
+                                }}
+                              />
+                              <motion.div
+                                className="h-2 w-2 rounded-full bg-zinc-400 dark:bg-zinc-500"
+                                animate={{
+                                  scale: [1, 1.2, 1],
+                                  opacity: [0.5, 1, 0.5],
+                                }}
+                                transition={{
+                                  duration: 1,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                  delay: 0.4,
+                                }}
+                              />
+                            </div>
+                            <span className="text-xs text-zinc-500 dark:text-zinc-400">Thinking...</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    
+
                     {/* Chat Input */}
-                    <div className="mt-4 space-y-2">
+                    <div className="mt-4 flex-shrink-0 space-y-2">
                       <div className="flex gap-2">
                         <input
                           type="text"
+                          value={input}
+                          onChange={(e) => setInput(e.target.value)}
+                          onKeyDown={handleKeyDown}
                           placeholder="Ask about Kabeer's experience, skills, projects..."
-                          className="flex-1 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm placeholder-zinc-500 focus:border-zinc-400 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder-zinc-400 dark:focus:border-zinc-500"
+                          disabled={isLoading}
+                          className="flex-1 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm placeholder-zinc-500 focus:border-zinc-400 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder-zinc-400 dark:focus:border-zinc-500"
                         />
-                        <button className="rounded-lg bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-colors">
+                        <button
+                          onClick={() => handleSendMessage()}
+                          disabled={isLoading || !input.trim()}
+                          className="rounded-lg bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-colors"
+                        >
                           Send
                         </button>
                       </div>
                       <div className="flex flex-wrap gap-2">
-                        <button className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors">
+                        <button
+                          onClick={() => handleSendMessage("What's his experience at EY?")}
+                          disabled={isLoading}
+                          className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors"
+                        >
                           What's his experience at EY?
                         </button>
-                        <button className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors">
+                        <button
+                          onClick={() => handleSendMessage("Tell me about his AI projects")}
+                          disabled={isLoading}
+                          className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors"
+                        >
                           Tell me about his AI projects
                         </button>
-                        <button className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors">
+                        <button
+                          onClick={() => handleSendMessage("What are his technical skills?")}
+                          disabled={isLoading}
+                          className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 hover:bg-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 transition-colors"
+                        >
                           What are his technical skills?
                         </button>
                       </div>
