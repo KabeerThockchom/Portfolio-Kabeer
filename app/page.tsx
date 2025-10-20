@@ -228,46 +228,46 @@ export default function Personal() {
     >
       {/* Tabs Navigation */}
       <motion.div
-        className="mb-3 flex justify-center overflow-x-auto"
+        className="mb-3 flex justify-center"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <div className="flex rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800/70 min-w-max">
+        <div className="flex flex-wrap justify-center gap-1 rounded-lg bg-zinc-100 p-1 dark:bg-zinc-800/70 max-w-full">
           <button
-            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'about' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2 py-1.5 sm:px-2.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'about' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('about')}
           >
-            <CodeIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> <span className="hidden xs:inline">About</span><span className="xs:hidden">About</span>
+            <CodeIcon className="mr-0.5 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> About
           </button>
           <button
-            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2 py-1.5 sm:px-2.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'projects' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('projects')}
           >
-            <CodeIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Projects
+            <CodeIcon className="mr-0.5 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Projects
           </button>
           <button
-            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2 py-1.5 sm:px-2.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'experience' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('experience')}
           >
-            <BriefcaseIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Experience
+            <BriefcaseIcon className="mr-0.5 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Experience
           </button>
           <button
-            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'blog' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2 py-1.5 sm:px-2.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'blog' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('blog')}
           >
-            <FileTextIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Blog
+            <FileTextIcon className="mr-0.5 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Blog
           </button>
           <button
-            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'resume' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2 py-1.5 sm:px-2.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'resume' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('resume')}
           >
-            <UserIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Resume
+            <UserIcon className="mr-0.5 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Resume
           </button>
           <button
-            className={`flex items-center rounded-md px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'contact' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
+            className={`flex items-center rounded-md px-2 py-1.5 sm:px-2.5 text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'contact' ? 'bg-white text-zinc-900 shadow dark:bg-zinc-700 dark:text-zinc-100' : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'}`}
             onClick={() => setActiveTab('contact')}
           >
-            <MailIcon className="mr-1 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Contact
+            <MailIcon className="mr-0.5 sm:mr-1.5 h-3 w-3 sm:h-3.5 sm:w-3.5" /> Contact
           </button>
         </div>
       </motion.div>
