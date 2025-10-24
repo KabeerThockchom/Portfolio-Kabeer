@@ -4,6 +4,7 @@ type Project = {
   link: string
   video: string
   id: string
+  techStack: string[]
 }
 
 type WorkExperience = {
@@ -32,64 +33,72 @@ type SocialLink = {
 export const PROJECTS: Project[] = [
     {
     name: 'Portfolio AI - Voice-Enabled Financial Assistant',
-    description: 'Cutting-edge voice-powered AI financial assistant that transforms how you interact with market data. Simply speak naturally to access real-time stock charts, company profiles, analyst recommendations, earnings calendars, and trending tickers—all through seamless voice commands powered by Azure OpenAI\'s GPT-4 real-time API. Features WebRTC low-latency audio streaming, 7 distinct data visualization types with interactive ApexCharts, intelligent function calling for dynamic data retrieval, content history navigation with swipe gestures, and comprehensive financial insights from Yahoo Finance. Experience hands-free portfolio management with sophisticated AI that understands context and delivers actionable insights instantly. Tech Stack: Next.js 15, React 19, TypeScript, Azure OpenAI GPT-4 Real-time API, WebRTC, Yahoo Finance API, ApexCharts, Tailwind CSS, Shadcn UI',
+    description: 'Cutting-edge voice-powered AI financial assistant that transforms how you interact with market data. Simply speak naturally to access real-time stock charts, company profiles, analyst recommendations, earnings calendars, and trending tickers—all through seamless voice commands powered by Azure OpenAI\'s GPT-4 real-time API. Features WebRTC low-latency audio streaming, 7 distinct data visualization types with interactive ApexCharts, intelligent function calling for dynamic data retrieval, content history navigation with swipe gestures, and comprehensive financial insights from Yahoo Finance. Experience hands-free portfolio management with sophisticated AI that understands context and delivers actionable insights instantly.',
     link: 'https://kabeerportfolioai.vercel.app/',
     video: 'https://drive.google.com/file/d/1oT3xnwTZi8zCe6ZMcJKGuIJqAsPttJKA/view?usp=drive_link',
-    id: 'project1'
+    id: 'project1',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Azure OpenAI Realtime', 'WebRTC', 'Yahoo Finance API', 'ApexCharts', 'Tailwind CSS', 'Shadcn UI']
   },
   {
     name: 'Text2SQL - Natural Language Business Intelligence',
-    description: 'AI-powered Text2SQL solution that seamlessly converts natural language into precise SQL queries, empowering business teams to unlock insights effortlessly. Built-in adaptive learning for query accuracy, customizable database documentation for pinpoint searches, 100+ chart types for rich visualizations, and versatile data export options. Transform your data interaction and decision-making process today. Tech Stack: React, OpenAI gpt-4o-mini, SQLite, Plotly, FastAPI, Docker, LangSmith',
+    description: 'AI-powered Text2SQL solution that seamlessly converts natural language into precise SQL queries, empowering business teams to unlock insights effortlessly. Built-in adaptive learning for query accuracy, customizable database documentation for pinpoint searches, 100+ chart types for rich visualizations, and versatile data export options. Transform your data interaction and decision-making process today.',
     link: 'https://text2sql.fly.dev',
     video:
       'https://drive.google.com/file/d/1dUvFzEmn0e5xz2SsDUUBPUYxhTH9TyOY/view?usp=drive_link',
     id: 'project1',
+    techStack: ['React', 'OpenAI', 'SQLite', 'Plotly', 'FastAPI', 'Docker', 'LangSmith', 'Anthropic Claude 4.5 Haiku']
   },
   {
     name: 'EY Voice - EY Generative AI Call Center as a Service',
-    description: 'EY Voice is a groundbreaking AI-powered tool that revolutionizes customer interaction analysis. By leveraging advanced AI and LLMs, it extracts actionable insights from diverse communication channels, driving productivity, automation, and digital transformation across enterprises. Tech Stack: React, Azure Serverless Functions, Azure VM, Azure MSSQL, AzureOpenAI gpt-4o, FastAPI, Docker, LangSmith',
+    description: 'EY Voice is a groundbreaking AI-powered tool that revolutionizes customer interaction analysis. By leveraging advanced AI and LLMs, it extracts actionable insights from diverse communication channels, driving productivity, automation, and digital transformation across enterprises.',
     link: 'https://genaiccdeploy.azurewebsites.net/',
     video:
       'https://drive.google.com/file/d/156tYjIsuSYuKiqOXkwKdfgZ1l5xfi7S1/view?usp=drive_link',
     id: 'project2',
+    techStack: ['React', 'Azure Functions', 'Azure VM', 'Azure MSSQL', 'Azure OpenAI', 'FastAPI', 'Docker', 'LangSmith', 'OpenAI gpt-4o-mini']
   },
   {
     name: 'BottegaAI - Customer AI for Restaurants',
-    description: 'AI-powered voice agent revolutionizing restaurant operations by handling phone interactions, order placement, and personalization. Seamlessly integrates with POS systems, supports 50+ languages, and manages the entire customer journey. Streamlines operations while enhancing customer experience through AI-driven efficiency. Tech Stack: React, Twilio, AWS EC2, Anthropic Claude 3.5 Haiku, Stripe, Docker, LangSmith',
+    description: 'AI-powered voice agent revolutionizing restaurant operations by handling phone interactions, order placement, and personalization. Seamlessly integrates with POS systems, supports 50+ languages, and manages the entire customer journey. Streamlines operations while enhancing customer experience through AI-driven efficiency.',
     link: 'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     video:
       'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     id: 'project3',
+    techStack: ['React', 'Twilio', 'AWS EC2', 'Claude', 'Stripe', 'Docker', 'LangSmith', 'OpenAI gpt-4o-mini']
   },
   {
     name: 'EYLAR - EY Local Agentic RAG',
-    description: 'Completely Local Agentic RAG system empowering EY consultants with personalized knowledge search across multiple file formats (PPT, Word, PDF, Excel). Agentic and on edge knowledge search with built-in privacy controls and precision guardrails, delivering accurate generative responses with transparent in-line citations. Transforms information retrieval while enhancing consultant productivity through AI-driven knowledge management. Tech Stack: React, LangGraph, Qdrant, Ollama, Docker, LangSmith',
+    description: 'Completely Local Agentic RAG system empowering EY consultants with personalized knowledge search across multiple file formats (PPT, Word, PDF, Excel). Agentic and on edge knowledge search with built-in privacy controls and precision guardrails, delivering accurate generative responses with transparent in-line citations. Transforms information retrieval while enhancing consultant productivity through AI-driven knowledge management.',
     link: 'https://www.youtube.com/watch?v=Ra3PvUVTPc4',
     video:
       'https://drive.google.com/file/d/1iYCLIs7553I11xkgzTnHVHdfGPERA6lj/view?usp=drive_link',
     id: 'project4',
+    techStack: ['React', 'LangGraph', 'Qdrant', 'Ollama', 'Docker', 'LangSmith', 'OpenAI gpt-4o-mini']
   },
   {
     name: 'Generative UI Banking POC',
-    description: 'Created a dynamic UI generation system AI chatbot for a banking client using LangGraph.js, GPT-4o-mini, and Vercel AI SDK. Developed real-time component rendering within an enhanced chat interface, delivering contextually appropriate visual elements during customer conversations. Tech Stack: React, LangGraph.js, GPT-4o-mini, Vercel AI SDK, Docker, LangSmith',
+    description: 'Created a dynamic UI generation system AI chatbot for a banking client using LangGraph.js, GPT-4o-mini, and Vercel AI SDK. Developed real-time component rendering within an enhanced chat interface, delivering contextually appropriate visual elements during customer conversations.',
     link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353337/eygenui_hv5rv9.mov',
     video:
       'https://drive.google.com/file/d/1PrIoQKUO4N8YIwn-y2EsHkNyfvm8xgDG/view?usp=drive_link',
     id: 'project5',
+    techStack: ['React', 'LangGraph.js', 'OpenAI gpt-4o-mini', 'Vercel AI SDK', 'Docker', 'LangSmith']
   },
   {
     name: 'AI Monopoly Arena',
-    description: 'Play Monopoly against leading LLM models from OpenAI, Anthropic, and Gemini. Engage in trade, negotiation, and strategy to win the game. Tech Stack: HTML, CSS, JavaScript',
+    description: 'Play Monopoly against leading LLM models from OpenAI, Anthropic, and Gemini. Engage in trade, negotiation, and strategy to win the game.',
     link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353572/mono_zg8pzk.mov',
     video: 'https://drive.google.com/file/d/1EHut11qbjjMfP9NFr_PehOyNb5ul_bfK/view?usp=drive_link',
     id: 'project6',
+    techStack: ['HTML', 'CSS', 'JavaScript', 'OpenAI', 'Anthropic', 'Gemini']
   },
   {
     name: 'ETF AI',
-    description: 'AI-powered financial platform revolutionizing ETF data analysis by processing 10K+ daily queries with 95% accuracy. Supports real-time data visualization, and manages complex financial insights through natural language. Streamlines investment decision-making while enhancing user experience through AI-driven financial intelligence. Tech Stack: React, Snowflake, Vanna AI, OpenAI gpt-4o-mini, Docker, LangSmith',
+    description: 'AI-powered financial platform revolutionizing ETF data analysis by processing 10K+ daily queries with 95% accuracy. Supports real-time data visualization, and manages complex financial insights through natural language. Streamlines investment decision-making while enhancing user experience through AI-driven financial intelligence. Tech Stack: React, Snowflake, OpenAI gpt-4o-mini, Docker, LangSmith',
     link: 'https://prod.quantie.com/',
     video: 'https://drive.google.com/file/d/1m6AdQYB-GxmgYwFx4Fp04wxOTGIfVmyP/view?usp=drive_link',
     id: 'project7',
+    techStack: ['React', 'Snowflake', 'OpenAI gpt-4o-mini', 'Docker', 'LangSmith']
   }
 ]
 

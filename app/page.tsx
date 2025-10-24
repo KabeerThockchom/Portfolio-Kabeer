@@ -364,8 +364,8 @@ export default function Personal() {
                     >
                       <MorphingDialogTrigger>
                         <p className="cursor-pointer text-sm text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
-                          {project.description.length > 150 
-                            ? `${project.description.substring(0, 150)}...` 
+                          {project.description.length > 150
+                            ? `${project.description.substring(0, 150)}...`
                             : project.description}
                         </p>
                       </MorphingDialogTrigger>
@@ -378,6 +378,19 @@ export default function Personal() {
                             <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                               {project.description}
                             </p>
+                            <div>
+                              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Tech Stack</h4>
+                              <div className="flex flex-wrap gap-2">
+                                {project.techStack.map((tech, index) => (
+                                  <span
+                                    key={index}
+                                    className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-200/50 dark:bg-blue-950/30 dark:text-blue-300 dark:ring-blue-800/50"
+                                  >
+                                    {tech}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
                             <a
                               href={project.link}
                               target="_blank"
@@ -417,6 +430,16 @@ export default function Personal() {
                         </MorphingDialogClose>
                       </MorphingDialogContainer>
                     </MorphingDialog>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {project.techStack.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-blue-200/50 dark:bg-blue-950/30 dark:text-blue-300 dark:ring-blue-800/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
