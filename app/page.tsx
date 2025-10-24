@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon, BriefcaseIcon, CodeIcon, FileTextIcon, MailIcon, HeartIcon, DownloadIcon, MessageSquareIcon, UserIcon, FolderIcon } from 'lucide-react'
+import { XIcon, BriefcaseIcon, CodeIcon, FileTextIcon, MailIcon, HeartIcon, DownloadIcon, MessageSquareIcon, UserIcon, FolderIcon, ExternalLinkIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
@@ -347,12 +347,13 @@ export default function Personal() {
                   </div>
                   <div className="px-1">
                     <a
-                      className="font-base group relative inline-block text-sm font-[450] text-zinc-900 dark:text-zinc-50"
+                      className="font-base group relative inline-flex items-center gap-1 text-sm font-[450] text-blue-600 dark:text-blue-400 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
                       href={project.link}
                       target="_blank"
                     >
                       {project.name}
-                      <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
+                      <ExternalLinkIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span className="absolute bottom-0.5 left-0 block h-[1.5px] w-full max-w-0 bg-blue-700 dark:bg-blue-300 transition-all duration-200 group-hover:max-w-full"></span>
                     </a>
                     <MorphingDialog
                       transition={{
@@ -445,12 +446,13 @@ export default function Personal() {
                             {job.title}
                           </h4>
                           <div className="flex flex-col sm:flex-row sm:items-center">
-                            <a 
+                            <a
                               href={job.link}
                               target="_blank"
-                              className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                              className="group inline-flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 cursor-pointer transition-colors"
                             >
                               {job.company}
+                              <ExternalLinkIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </a>
                             <span className="hidden text-zinc-400 sm:mx-2 sm:inline">&middot;</span>
                             <span className="text-sm text-zinc-500 dark:text-zinc-500">{job.location}</span>

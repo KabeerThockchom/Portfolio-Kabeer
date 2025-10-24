@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     name: 'Portfolio AI - Voice-Enabled Financial Assistant',
     description: 'Cutting-edge voice-powered AI financial assistant that transforms how you interact with market data. Simply speak naturally to access real-time stock charts, company profiles, analyst recommendations, earnings calendars, and trending tickers—all through seamless voice commands powered by Azure OpenAI\'s GPT-4 real-time API. Features WebRTC low-latency audio streaming, 7 distinct data visualization types with interactive ApexCharts, intelligent function calling for dynamic data retrieval, content history navigation with swipe gestures, and comprehensive financial insights from Yahoo Finance. Experience hands-free portfolio management with sophisticated AI that understands context and delivers actionable insights instantly. Tech Stack: Next.js 15, React 19, TypeScript, Azure OpenAI GPT-4 Real-time API, WebRTC, Yahoo Finance API, ApexCharts, Tailwind CSS, Shadcn UI',
     link: 'https://kabeerportfolioai.vercel.app/',
-    video: '',
+    video: 'https://drive.google.com/file/d/1oT3xnwTZi8zCe6ZMcJKGuIJqAsPttJKA/view?usp=drive_link',
     id: 'project1'
   },
   {
