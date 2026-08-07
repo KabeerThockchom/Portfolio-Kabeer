@@ -14,8 +14,16 @@ const eslintConfig = [
     "next/core-web-vitals",
     "next/typescript",
     "plugin:prettier/recommended",
+    "plugin:mdx/recommended",
   ),
-  "plugin:mdx/recommended",
+  {
+    // MDX injects components (e.g. <Cover>) via useMDXComponents at render time,
+    // so jsx-no-undef cannot see them and produces false positives here.
+    files: ["**/*.mdx"],
+    rules: {
+      "react/jsx-no-undef": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

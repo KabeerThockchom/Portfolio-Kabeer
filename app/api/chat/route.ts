@@ -12,7 +12,10 @@ export async function POST(request: NextRequest) {
     const { message } = await request.json()
 
     if (!message) {
-      return NextResponse.json({ error: 'Message is required' }, { status: 400 })
+      return NextResponse.json(
+        { error: 'Message is required' },
+        { status: 400 },
+      )
     }
 
     // Instantiate lazily so a missing key returns a clean JSON error instead of
@@ -20,7 +23,7 @@ export async function POST(request: NextRequest) {
     if (!process.env.GROQ_API_KEY) {
       return NextResponse.json(
         { error: 'Chat is not configured (missing GROQ_API_KEY).' },
-        { status: 503 }
+        { status: 503 },
       )
     }
 
@@ -41,26 +44,28 @@ Guidelines:
 - If asked about technical details, explain them clearly
 - Focus on Kabeer's achievements and impact
 - Keep responses concise but informative (2-4 sentences typically)
-- Use "Kabeer" or "he" when referring to him in third person`
+- Use "Kabeer" or "he" when referring to him in third person`,
         },
         {
           role: 'user',
-          content: message
-        }
+          content: message,
+        },
       ],
       model: 'llama-3.3-70b-versatile',
       temperature: 0.3,
       max_tokens: 7000,
     })
 
-    const response = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.'
+    const response =
+      completion.choices[0]?.message?.content ||
+      'Sorry, I could not generate a response.'
 
     return NextResponse.json({ response })
   } catch (error) {
     console.error('Chat API error:', error)
     return NextResponse.json(
       { error: 'Failed to process chat request' },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

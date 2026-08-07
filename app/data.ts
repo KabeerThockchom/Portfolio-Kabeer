@@ -40,7 +40,15 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-maops',
-    techStack: ['Databricks', 'Unity Catalog', 'Model Serving', 'Agent Bricks', 'Multi-Agent (Supervisor)', 'Delta Lake', 'Genie'],
+    techStack: [
+      'Databricks',
+      'Unity Catalog',
+      'Model Serving',
+      'Agent Bricks',
+      'Multi-Agent (Supervisor)',
+      'Delta Lake',
+      'Genie',
+    ],
   },
   {
     name: 'Generative-Agents Retail Simulation',
@@ -49,7 +57,14 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-smallville',
-    techStack: ['Databricks', 'LLM Agents', 'Streaming', 'Multi-Agent', 'Human-in-the-Loop', 'Model Serving'],
+    techStack: [
+      'Databricks',
+      'LLM Agents',
+      'Streaming',
+      'Multi-Agent',
+      'Human-in-the-Loop',
+      'Model Serving',
+    ],
   },
   {
     name: 'Browser AI Agents on Databricks Apps',
@@ -58,17 +73,34 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/KabeerThockchom/coding-agents-databricks-apps',
     video: '',
     id: 'project-coda',
-    techStack: ['Databricks Apps', 'Browser Agents', 'Python', 'Make', 'Tool-Use Agents'],
-    githubUrl: 'https://github.com/KabeerThockchom/coding-agents-databricks-apps',
+    techStack: [
+      'Databricks Apps',
+      'Browser Agents',
+      'Python',
+      'Make',
+      'Tool-Use Agents',
+    ],
+    githubUrl:
+      'https://github.com/KabeerThockchom/coding-agents-databricks-apps',
   },
   {
     name: 'Portfolio AI - Voice-Enabled Financial Assistant',
     description:
       "A voice-powered AI financial assistant that transforms how you interact with market data. Speak naturally to access real-time stock charts, company profiles, analyst recommendations, earnings calendars, and trending tickers - all through voice commands powered by Azure OpenAI's GPT-4 real-time API. Features WebRTC low-latency audio streaming, 7 interactive data-visualization types, intelligent function calling for dynamic retrieval, and swipe-gesture content history.",
     link: 'https://finprometheus.vercel.app/',
-    video: 'https://drive.google.com/file/d/1oT3xnwTZi8zCe6ZMcJKGuIJqAsPttJKA/view?usp=drive_link',
+    video:
+      'https://drive.google.com/file/d/1oT3xnwTZi8zCe6ZMcJKGuIJqAsPttJKA/view?usp=drive_link',
     id: 'project-portfolioai',
-    techStack: ['Next.js', 'React', 'TypeScript', 'Azure OpenAI Realtime', 'WebRTC', 'Yahoo Finance API', 'ApexCharts', 'Tailwind CSS'],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Azure OpenAI Realtime',
+      'WebRTC',
+      'Yahoo Finance API',
+      'ApexCharts',
+      'Tailwind CSS',
+    ],
     githubUrl: 'https://github.com/KabeerThockchom/portfolio-ai-nxt',
   },
   {
@@ -76,9 +108,19 @@ export const PROJECTS: Project[] = [
     description:
       'An adaptive Text-to-SQL platform that converts natural language into precise SQL: query intent classification, schema-aware prompt engineering, and continuous-learning feedback loops, with 100+ chart types and flexible export. Reached 500+ users and reduced analyst workload by ~70% by letting business teams self-serve insights.',
     link: 'https://text2sql.fly.dev',
-    video: 'https://drive.google.com/file/d/1dUvFzEmn0e5xz2SsDUUBPUYxhTH9TyOY/view?usp=drive_link',
+    video:
+      'https://drive.google.com/file/d/1dUvFzEmn0e5xz2SsDUUBPUYxhTH9TyOY/view?usp=drive_link',
     id: 'project-text2sql',
-    techStack: ['React', 'OpenAI', 'Anthropic Claude', 'Qdrant', 'SQLite', 'Plotly', 'FastAPI', 'Docker'],
+    techStack: [
+      'React',
+      'OpenAI',
+      'Anthropic Claude',
+      'Qdrant',
+      'SQLite',
+      'Plotly',
+      'FastAPI',
+      'Docker',
+    ],
     githubUrl: 'https://github.com/KabeerThockchom/Text2SQLAI',
   },
   {
@@ -86,25 +128,44 @@ export const PROJECTS: Project[] = [
     description:
       'An enterprise, real-time AI call-center platform: a speech-to-text plus LLM pipeline for live call analysis, automated ticket routing, and agent-assist. Drove a 45% reduction in call resolution time and automated 75% of tickets across 10+ enterprise clients handling 1M+ calls per month. Presented as a keynote at NVIDIA GTC 2025 and secured $1.2M in funding.',
     link: 'https://genaiccdeploy.azurewebsites.net/',
-    video: 'https://drive.google.com/file/d/156tYjIsuSYuKiqOXkwKdfgZ1l5xfi7S1/view?usp=drive_link',
+    video:
+      'https://drive.google.com/file/d/156tYjIsuSYuKiqOXkwKdfgZ1l5xfi7S1/view?usp=drive_link',
     id: 'project-eyvoice',
-    techStack: ['React', 'Azure OpenAI', 'Speech-to-Text', 'FastAPI', 'Azure Functions', 'MSSQL', 'Docker'],
+    techStack: [
+      'React',
+      'Azure OpenAI',
+      'Speech-to-Text',
+      'FastAPI',
+      'Azure Functions',
+      'MSSQL',
+      'Docker',
+    ],
   },
   {
     name: 'BottegaAI - Restaurant Voice Agent',
     description:
       'An AI voice agent built on a ReAct architecture with tool-use for menu querying, order processing, and upselling. Handles the full customer journey over the phone, integrates with POS systems, and supports 50+ languages - achieving a 40% reduction in order-processing time and a 25% lift in upselling through personalization.',
     link: 'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
-    video: 'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
+    video:
+      'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     id: 'project-bottega',
-    techStack: ['React', 'Twilio', 'Claude', 'ReAct Agents', 'Stripe', 'AWS EC2', 'Docker'],
+    techStack: [
+      'React',
+      'Twilio',
+      'Claude',
+      'ReAct Agents',
+      'Stripe',
+      'AWS EC2',
+      'Docker',
+    ],
   },
   {
     name: 'EYLAR - Enterprise Agentic RAG Platform',
     description:
       'An on-premise, zero-trust Agentic RAG platform for enterprise knowledge search: multi-format document parsing (PDF, PPT, Word, Excel), chunking and embedding pipelines, and vector retrieval with transparent in-line citations. Deployed across 5 Fortune 500 companies, reducing latency by 60% and improving response accuracy by 35%.',
     link: 'https://www.youtube.com/watch?v=Ra3PvUVTPc4',
-    video: 'https://drive.google.com/file/d/1iYCLIs7553I11xkgzTnHVHdfGPERA6lj/view?usp=drive_link',
+    video:
+      'https://drive.google.com/file/d/1iYCLIs7553I11xkgzTnHVHdfGPERA6lj/view?usp=drive_link',
     id: 'project-eylar',
     techStack: ['React', 'LangGraph', 'Qdrant', 'Ollama', 'RAG', 'Docker'],
   },
@@ -113,7 +174,8 @@ export const PROJECTS: Project[] = [
     description:
       'A dynamic UI-generation system for a banking client: an AI chatbot that renders contextually appropriate visual components in real time during customer conversations, built with LangGraph.js, GPT-4o-mini, and the Vercel AI SDK.',
     link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353337/eygenui_hv5rv9.mov',
-    video: 'https://drive.google.com/file/d/1PrIoQKUO4N8YIwn-y2EsHkNyfvm8xgDG/view?usp=drive_link',
+    video:
+      'https://drive.google.com/file/d/1PrIoQKUO4N8YIwn-y2EsHkNyfvm8xgDG/view?usp=drive_link',
     id: 'project-genui',
     techStack: ['React', 'LangGraph.js', 'OpenAI', 'Vercel AI SDK', 'Docker'],
   },
@@ -122,7 +184,8 @@ export const PROJECTS: Project[] = [
     description:
       'A game where you play Monopoly against leading LLMs from OpenAI, Anthropic, and Gemini - trading, negotiating, and strategizing against models in real time.',
     link: 'https://res.cloudinary.com/dslghpuru/video/upload/v1745353572/mono_zg8pzk.mov',
-    video: 'https://drive.google.com/file/d/1EHut11qbjjMfP9NFr_PehOyNb5ul_bfK/view?usp=drive_link',
+    video:
+      'https://drive.google.com/file/d/1EHut11qbjjMfP9NFr_PehOyNb5ul_bfK/view?usp=drive_link',
     id: 'project-monopoly',
     techStack: ['JavaScript', 'OpenAI', 'Anthropic', 'Gemini'],
   },
@@ -131,7 +194,8 @@ export const PROJECTS: Project[] = [
     description:
       'An AI-powered financial platform for ETF data analysis, processing 10K+ daily queries with 95% accuracy. Supports real-time data visualization and handles complex financial insights through natural language, streamlining investment decision-making.',
     link: 'https://prod.quantie.com/',
-    video: 'https://drive.google.com/file/d/1m6AdQYB-GxmgYwFx4Fp04wxOTGIfVmyP/view?usp=drive_link',
+    video:
+      'https://drive.google.com/file/d/1m6AdQYB-GxmgYwFx4Fp04wxOTGIfVmyP/view?usp=drive_link',
     id: 'project-etfai',
     techStack: ['React', 'Snowflake', 'OpenAI', 'Docker'],
   },
@@ -183,7 +247,8 @@ type Recognition = {
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Databricks',
-    title: 'Solutions Architect, Field Engineering - Retail, Travel & Hospitality',
+    title:
+      'Solutions Architect, Field Engineering - Retail, Travel & Hospitality',
     start: 'December 2025',
     end: 'Present',
     location: 'San Francisco, CA',
@@ -281,7 +346,8 @@ export const EDUCATION: Education[] = [
     location: 'Austin, TX',
     start: 'January 2025',
     end: 'Present',
-    focus: 'Machine Learning Systems, Distributed Computing, Statistical Learning',
+    focus:
+      'Machine Learning Systems, Distributed Computing, Statistical Learning',
     coursework: ['MLOps', 'A/B Testing', 'Experiment Design'],
     logo: '/logos/utaustin.svg',
     id: 'edu1',
@@ -295,7 +361,12 @@ export const EDUCATION: Education[] = [
     gpa: '3.7/4.0',
     minors: ['Statistics', 'Technology Management'],
     honors: ["Dean's Scholar (2020-2022)", 'March Fund Award (2022)'],
-    coursework: ['Machine Learning', 'Database Systems', 'Statistical Analysis', 'HCI'],
+    coursework: [
+      'Machine Learning',
+      'Database Systems',
+      'Statistical Analysis',
+      'HCI',
+    ],
     logo: '/logos/ucdavis.svg',
     id: 'edu2',
   },
@@ -304,44 +375,117 @@ export const EDUCATION: Education[] = [
 export const SKILLS: Skill[] = [
   {
     category: 'Solutions Engineering',
-    items: ['Greenfield Account Development', 'Executive Discovery (CIO/CTO/CDO)', 'POC Scoping & Delivery', 'Migration Architecture', 'Demo & Reference Asset Engineering', 'On-Site Workshops', 'AE Partnership', 'Territory Planning', 'MEDDPICC', 'Value Framing'],
+    items: [
+      'Greenfield Account Development',
+      'Executive Discovery (CIO/CTO/CDO)',
+      'POC Scoping & Delivery',
+      'Migration Architecture',
+      'Demo & Reference Asset Engineering',
+      'On-Site Workshops',
+      'AE Partnership',
+      'Territory Planning',
+      'MEDDPICC',
+      'Value Framing',
+    ],
   },
   {
     category: 'Databricks Platform',
-    items: ['Unity Catalog', 'Model Serving', 'Lakeflow / DLT', 'Agent Bricks & Agent Framework', 'Genie', 'AI/BI Dashboards', 'Databricks Apps', 'Asset Bundles (DABs)', 'Lakebase', 'MCP', 'Vector Search'],
+    items: [
+      'Unity Catalog',
+      'Model Serving',
+      'Lakeflow / DLT',
+      'Agent Bricks & Agent Framework',
+      'Genie',
+      'AI/BI Dashboards',
+      'Databricks Apps',
+      'Asset Bundles (DABs)',
+      'Lakebase',
+      'MCP',
+      'Vector Search',
+    ],
   },
   {
     category: 'LLMs & Agents',
-    items: ['GPT-4', 'Claude', 'LLaMA', 'RAG Architectures', 'ReAct Agents', 'Tool-Use Patterns', 'Multi-Agent Orchestration (Supervisor)', 'Prompt Engineering', 'Fine-tuning (LoRA/QLoRA)', 'Evaluation Frameworks'],
+    items: [
+      'GPT-4',
+      'Claude',
+      'LLaMA',
+      'RAG Architectures',
+      'ReAct Agents',
+      'Tool-Use Patterns',
+      'Multi-Agent Orchestration (Supervisor)',
+      'Prompt Engineering',
+      'Fine-tuning (LoRA/QLoRA)',
+      'Evaluation Frameworks',
+    ],
   },
   {
     category: 'Data & ML',
-    items: ['Python', 'SQL', 'Delta Lake', 'Apache Spark', 'PyTorch', 'TensorFlow', 'Hugging Face Transformers', 'LangChain', 'MLflow', 'Qdrant', 'Pinecone', 'FAISS'],
+    items: [
+      'Python',
+      'SQL',
+      'Delta Lake',
+      'Apache Spark',
+      'PyTorch',
+      'TensorFlow',
+      'Hugging Face Transformers',
+      'LangChain',
+      'MLflow',
+      'Qdrant',
+      'Pinecone',
+      'FAISS',
+    ],
   },
   {
     category: 'Cloud & Infra',
-    items: ['AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'CI/CD', 'Snowflake', 'BigQuery', 'PostgreSQL', 'MongoDB'],
+    items: [
+      'AWS',
+      'Azure',
+      'GCP',
+      'Docker',
+      'Kubernetes',
+      'CI/CD',
+      'Snowflake',
+      'BigQuery',
+      'PostgreSQL',
+      'MongoDB',
+    ],
   },
   {
     category: 'MLOps',
-    items: ['Model Registry', 'Experiment Tracking', 'Feature Stores', 'Model Monitoring', 'A/B Testing', 'LLMOps'],
+    items: [
+      'Model Registry',
+      'Experiment Tracking',
+      'Feature Stores',
+      'Model Monitoring',
+      'A/B Testing',
+      'LLMOps',
+    ],
   },
   {
     category: 'Languages',
-    items: ['English (Native)', 'Hindi (Native)', 'Spanish (Conversational)', 'Punjabi (Conversational)'],
+    items: [
+      'English (Native)',
+      'Hindi (Native)',
+      'Spanish (Conversational)',
+      'Punjabi (Conversational)',
+    ],
   },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: "Every AI Agent Needs a Database. Most of Them Don't Know It Yet.",
-    description: 'Why AI agents need persistent database infrastructure - with branching and governance - to support dev sandboxes, production, A/B testing, and RL training loops.',
+    description:
+      'Why AI agents need persistent database infrastructure - with branching and governance - to support dev sandboxes, production, A/B testing, and RL training loops.',
     link: 'https://medium.com/@thockchomkabeer/every-ai-agent-needs-a-database-most-of-them-dont-know-it-yet-1fa48ab740cf',
     uid: 'blog-agent-database',
   },
   {
-    title: 'How I Used /goal in Claude Code to Build a Complete Product Demo - and Shoot the Demo Video Itself',
-    description: "Using Claude Code's goal loop to autonomously build a production Databricks demo app, complete with a self-generated narrated video, in eight days before an executive briefing.",
+    title:
+      'How I Used /goal in Claude Code to Build a Complete Product Demo - and Shoot the Demo Video Itself',
+    description:
+      "Using Claude Code's goal loop to autonomously build a production Databricks demo app, complete with a self-generated narrated video, in eight days before an executive briefing.",
     link: 'https://medium.com/@thockchomkabeer/how-i-used-goal-in-claude-code-to-make-it-build-a-complete-product-demo-and-shoot-a-demo-video-a6a9b9311833',
     uid: 'blog-goal-claude-code',
   },
@@ -352,14 +496,17 @@ export const BLOG_POSTS: BlogPost[] = [
     uid: 'blog-1',
   },
   {
-    title: 'How to build an ML model to predict Premier League season & match results',
-    description: 'A deep dive into building an ML model to predict Premier League season & match results',
+    title:
+      'How to build an ML model to predict Premier League season & match results',
+    description:
+      'A deep dive into building an ML model to predict Premier League season & match results',
     link: 'https://docs.google.com/document/d/1U6lkcSmnxW4RwvFIUdSesEVX_bXsSFVm/edit?usp=sharing&ouid=109640699554357737812&rtpof=true&sd=true',
     uid: 'blog-2',
   },
   {
     title: 'Case study on the Wells Fargo "8 is great" scandal',
-    description: 'A deep-dive analysis into the Wells Fargo "8 is great" scandal - what went wrong, and how to prevent it in the future',
+    description:
+      'A deep-dive analysis into the Wells Fargo "8 is great" scandal - what went wrong, and how to prevent it in the future',
     link: 'https://docs.google.com/presentation/d/1eEI_uHqw4Ay_8JOnqOytPtHil2A2VyrR/edit?usp=drive_link&ouid=109640699554357737812&rtpof=true&sd=true',
     uid: 'blog-3',
   },
@@ -402,14 +549,16 @@ export const AWARDS: Award[] = [
     name: 'EY Wealth Asset Management Hackathon Winner',
     issuer: 'Ernst and Young LLP',
     date: 'February 2025',
-    description: 'Developed a multi-agent platform automating wealth-management workflows; won the $50K prize',
+    description:
+      'Developed a multi-agent platform automating wealth-management workflows; won the $50K prize',
     id: 'award1',
   },
   {
     name: 'March Fund Award',
     issuer: 'University of California Davis, Letters & Science',
     date: 'June 2022',
-    description: 'Recognition for student achievement in internships and on-campus impact',
+    description:
+      'Recognition for student achievement in internships and on-campus impact',
     id: 'award2',
   },
   {
@@ -426,21 +575,24 @@ export const RECOGNITION: Recognition[] = [
     title: 'NVIDIA GTC 2025 - Featured Speaker',
     issuer: 'NVIDIA GTC 2025',
     date: 'March 2025',
-    description: '"EY Voice: AI-Powered Contact Centers" - presented enterprise AI platform architecture to 500+ attendees, demonstrating 45% call-reduction metrics.',
+    description:
+      '"EY Voice: AI-Powered Contact Centers" - presented enterprise AI platform architecture to 500+ attendees, demonstrating 45% call-reduction metrics.',
     id: 'rec1',
   },
   {
     title: 'EY Wealth Asset Management Hackathon Winner',
     issuer: 'Ernst and Young LLP',
     date: 'February 2025',
-    description: 'Built a multi-agent platform automating wealth-management workflows; won the $50K prize.',
+    description:
+      'Built a multi-agent platform automating wealth-management workflows; won the $50K prize.',
     id: 'rec2',
   },
   {
     title: "Dean's Scholar & March Fund Award",
     issuer: 'University of California, Davis',
     date: '2020-2022',
-    description: 'Top 16% of class for academic excellence and leadership impact.',
+    description:
+      'Top 16% of class for academic excellence and leadership impact.',
     id: 'rec3',
   },
 ]
@@ -451,7 +603,8 @@ export const LAST_UPDATED = '2026-08-07'
 
 // Resume-tab PDF: self-hosted download + Google Drive preview.
 export const RESUME_PDF_DOWNLOAD = '/Kabeer_Thockchom_Resume.pdf'
-export const RESUME_PDF_PREVIEW = 'https://drive.google.com/file/d/1o0xc-DgIRA8UTWNnnv0t3p1YyjT-vuGp/preview'
+export const RESUME_PDF_PREVIEW =
+  'https://drive.google.com/file/d/1o0xc-DgIRA8UTWNnnv0t3p1YyjT-vuGp/preview'
 
 /**
  * Builds the chatbot's knowledge base from the structured data above so there is
@@ -470,7 +623,9 @@ export function buildKnowledgeBase(): string {
   }).join('\n')
 
   const education = EDUCATION.map((e) => {
-    const parts = [`${e.degree}, ${e.school} (${e.start} - ${e.end}, ${e.location})`]
+    const parts = [
+      `${e.degree}, ${e.school} (${e.start} - ${e.end}, ${e.location})`,
+    ]
     if (e.focus) parts.push(`Focus: ${e.focus}`)
     if (e.gpa) parts.push(`GPA: ${e.gpa}`)
     if (e.minors?.length) parts.push(`Minors: ${e.minors.join(', ')}`)
@@ -478,9 +633,15 @@ export function buildKnowledgeBase(): string {
     return `- ${parts.join('. ')}`
   }).join('\n')
 
-  const skills = SKILLS.map((s) => `- ${s.category}: ${s.items.join(', ')}`).join('\n')
-  const certs = CERTIFICATIONS.map((c) => `- ${c.name} (${c.issuer}, ${c.year})`).join('\n')
-  const recognition = RECOGNITION.map((r) => `- ${r.title} (${r.issuer}, ${r.date}): ${r.description ?? ''}`).join('\n')
+  const skills = SKILLS.map(
+    (s) => `- ${s.category}: ${s.items.join(', ')}`,
+  ).join('\n')
+  const certs = CERTIFICATIONS.map(
+    (c) => `- ${c.name} (${c.issuer}, ${c.year})`,
+  ).join('\n')
+  const recognition = RECOGNITION.map(
+    (r) => `- ${r.title} (${r.issuer}, ${r.date}): ${r.description ?? ''}`,
+  ).join('\n')
 
   return `About Kabeer Singh Thockchom:
 Kabeer is a Solutions Architect on the Field Engineering team at Databricks (Retail, Travel & Hospitality), based in San Francisco, CA. He has 4+ years of customer-facing AI experience and currently drives greenfield account strategy across 21+ Fortune 500 retail, travel, and hospitality accounts on the Databricks Lakehouse - running technical discovery with C-suite buyers, architecting migrations off Snowflake / BigQuery / Domo / Power BI / AS400, and shipping customer-facing demos and reusable reference assets. He is a hands-on builder of multi-agent platforms, LLM-powered demos, and RAG architectures shipped to 10+ Fortune 500 customers. He was a featured speaker at NVIDIA GTC 2025 and an EY hackathon winner. Contact: ${EMAIL}.
