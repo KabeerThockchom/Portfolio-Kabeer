@@ -13,9 +13,9 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Hi, I am Kabeer Thockchom!',
+  title: 'Kabeer Thockchom - Solutions Architect @ Databricks',
   description:
-    'I am a data and AI consultant with a passion for building innovative solutions.',
+    'Solutions Architect on the Field Engineering team at Databricks, building multi-agent platforms, LLM-powered demos, and RAG architectures for Fortune 500 retail, travel, and hospitality.',
 }
 
 const geist = Geist({

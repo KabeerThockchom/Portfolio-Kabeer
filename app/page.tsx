@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon, BriefcaseIcon, CodeIcon, FileTextIcon, MailIcon, HeartIcon, DownloadIcon, MessageSquareIcon, UserIcon, FolderIcon, ExternalLinkIcon } from 'lucide-react'
+import { XIcon, BriefcaseIcon, CodeIcon, FileTextIcon, MailIcon, HeartIcon, DownloadIcon, MessageSquareIcon, UserIcon, FolderIcon, ExternalLinkIcon, GithubIcon, AwardIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
@@ -24,6 +24,9 @@ import {
   SOCIAL_LINKS,
   EDUCATION,
   SKILLS,
+  RECOGNITION,
+  RESUME_PDF_DOWNLOAD,
+  RESUME_PDF_PREVIEW,
 } from './data'
 
 type TabType = 'about' | 'projects' | 'experience' | 'blog' | 'resume' | 'contact'
@@ -296,7 +299,11 @@ export default function Personal() {
                 </motion.p>
                 
                 <p className="mb-3 text-sm text-zinc-600 dark:text-zinc-400">
-                  Driving AI innovation from concept to completion. Translating customer insights into impactful products across startup and enterprise environments.
+                  I'm a Solutions Architect on the Field Engineering team at Databricks, covering greenfield Fortune 500 retail, travel, and hospitality accounts. I run technical discovery with C-suite buyers, architect end-to-end migrations off Snowflake, BigQuery, Domo, Power BI, and AS400, and ship customer-facing demos and reusable reference assets that move accounts from pre-discovery to committed POC in weeks.
+                </p>
+
+                <p className="mb-3 text-sm text-zinc-600 dark:text-zinc-400">
+                  I'm a hands-on builder of multi-agent platforms, LLM-powered demos, and RAG architectures that have shipped to 10+ Fortune 500 customers - blending AI platform engineering, startup founding, and stage presence (NVIDIA GTC 2025 speaker, hackathon winner).
                 </p>
                 
                 <div className="mt-4">
@@ -343,18 +350,36 @@ export default function Personal() {
               {PROJECTS.map((project) => (
                 <div key={project.name} className="space-y-1">
                   <div className="relative rounded-lg bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                    <ProjectVideo src={project.video} />
+                    {project.video ? (
+                      <ProjectVideo src={project.video} />
+                    ) : (
+                      <div className="flex aspect-video w-full items-center justify-center rounded-xl bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-800">
+                        <CodeIcon className="h-8 w-8 text-zinc-400 dark:text-zinc-600" />
+                      </div>
+                    )}
                   </div>
                   <div className="px-1">
-                    <a
-                      className="font-base group relative inline-flex items-center gap-1 text-sm font-[450] text-blue-600 dark:text-blue-400 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                      href={project.link}
-                      target="_blank"
-                    >
-                      {project.name}
-                      <ExternalLinkIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      <span className="absolute bottom-0.5 left-0 block h-[1.5px] w-full max-w-0 bg-blue-700 dark:bg-blue-300 transition-all duration-200 group-hover:max-w-full"></span>
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a
+                        className="font-base group relative inline-flex items-center gap-1 text-sm font-[450] text-blue-600 dark:text-blue-400 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                        href={project.link}
+                        target="_blank"
+                      >
+                        {project.name}
+                        <ExternalLinkIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span className="absolute bottom-0.5 left-0 block h-[1.5px] w-full max-w-0 bg-blue-700 dark:bg-blue-300 transition-all duration-200 group-hover:max-w-full"></span>
+                      </a>
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          aria-label={`${project.name} on GitHub`}
+                          className="shrink-0 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
+                        >
+                          <GithubIcon className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                    </div>
                     <MorphingDialog
                       transition={{
                         type: 'spring',
@@ -464,24 +489,35 @@ export default function Personal() {
                       transition={{ duration: 0.3 }}
                     >
                       <div className="mb-1 flex flex-col justify-between space-y-1 sm:flex-row sm:items-center sm:space-y-0">
-                        <div>
-                          <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
-                            {job.title}
-                          </h4>
-                          <div className="flex flex-col sm:flex-row sm:items-center">
-                            <a
-                              href={job.link}
-                              target="_blank"
-                              className="group inline-flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 cursor-pointer transition-colors"
-                            >
-                              {job.company}
-                              <ExternalLinkIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                            </a>
-                            <span className="hidden text-zinc-400 sm:mx-2 sm:inline">&middot;</span>
-                            <span className="text-sm text-zinc-500 dark:text-zinc-500">{job.location}</span>
+                        <div className="flex items-start gap-3">
+                          {job.logo && (
+                            <span className="mt-0.5 flex h-9 shrink-0 items-center justify-center rounded-md bg-white px-2 ring-1 ring-zinc-200/60 dark:bg-white/95 dark:ring-zinc-800">
+                              <img
+                                src={job.logo}
+                                alt={`${job.company} logo`}
+                                className="h-5 w-auto max-w-[80px] object-contain"
+                              />
+                            </span>
+                          )}
+                          <div>
+                            <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                              {job.title}
+                            </h4>
+                            <div className="flex flex-col sm:flex-row sm:items-center">
+                              <a
+                                href={job.link}
+                                target="_blank"
+                                className="group inline-flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 cursor-pointer transition-colors"
+                              >
+                                {job.company}
+                                <ExternalLinkIcon className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                              </a>
+                              <span className="hidden text-zinc-400 sm:mx-2 sm:inline">&middot;</span>
+                              <span className="text-sm text-zinc-500 dark:text-zinc-500">{job.location}</span>
+                            </div>
                           </div>
                         </div>
-                        <div className="text-sm font-light text-zinc-500 dark:text-zinc-400">
+                        <div className="shrink-0 text-sm font-light text-zinc-500 dark:text-zinc-400">
                           {job.start} - {job.end}
                         </div>
                       </div>
@@ -513,16 +549,33 @@ export default function Personal() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="mb-1 flex justify-between">
-                          <h4 className="font-medium text-zinc-900 dark:text-zinc-100">{edu.school}</h4>
-                          <div className="text-xs text-zinc-500">{edu.start} - {edu.end}</div>
+                        <div className="mb-1 flex items-start justify-between gap-2">
+                          <div className="flex items-start gap-2">
+                            {edu.logo && (
+                              <span className="mt-0.5 flex h-8 shrink-0 items-center justify-center rounded-md bg-white px-1.5 ring-1 ring-zinc-200/60 dark:bg-white/95 dark:ring-zinc-800">
+                                <img
+                                  src={edu.logo}
+                                  alt={`${edu.school} logo`}
+                                  className="h-5 w-auto max-w-[64px] object-contain"
+                                />
+                              </span>
+                            )}
+                            <h4 className="font-medium text-zinc-900 dark:text-zinc-100">{edu.school}</h4>
+                          </div>
+                          <div className="shrink-0 text-xs text-zinc-500">{edu.start} - {edu.end}</div>
                         </div>
                         <div className="text-sm text-zinc-700 dark:text-zinc-300">{edu.degree}</div>
                         <div className="text-xs text-zinc-500">{edu.location}</div>
-                        
+
                         {edu.focus && (
                           <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
                             <span className="font-medium">Focus:</span> {edu.focus}
+                          </div>
+                        )}
+
+                        {edu.coursework && edu.coursework.length > 0 && (
+                          <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                            <span className="font-medium">Coursework:</span> {edu.coursework.join(', ')}
                           </div>
                         )}
                         
@@ -573,6 +626,34 @@ export default function Personal() {
                             </span>
                           ))}
                         </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Recognition Section */}
+                <div>
+                  <h3 className="mb-2 text-base font-medium">Recognition & Speaking</h3>
+                  <div className="space-y-3">
+                    {RECOGNITION.map((item, index) => (
+                      <motion.div
+                        key={item.id}
+                        className="rounded-lg border border-zinc-200 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-950"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                      >
+                        <div className="mb-1 flex items-start justify-between gap-2">
+                          <h4 className="flex items-start gap-1.5 font-medium text-zinc-900 dark:text-zinc-100">
+                            <AwardIcon className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+                            {item.title}
+                          </h4>
+                          <div className="shrink-0 text-xs text-zinc-500">{item.date}</div>
+                        </div>
+                        <div className="text-xs text-zinc-500">{item.issuer}</div>
+                        {item.description && (
+                          <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">{item.description}</p>
+                        )}
                       </motion.div>
                     ))}
                   </div>
@@ -628,7 +709,7 @@ export default function Personal() {
                 <div className="flex items-center justify-between">
                   <h4 className="text-base font-medium">PDF Viewer</h4>
                   <a
-                    href="https://drive.google.com/uc?export=download&id=1gEhKBfnrB6aSulOJC2eM6R2u6wx8cZWb"
+                    href={RESUME_PDF_DOWNLOAD}
                     download="Kabeer_Thockchom_Resume.pdf"
                     className="inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-3 py-1.5 text-sm text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 transition-colors"
                   >
@@ -638,7 +719,7 @@ export default function Personal() {
                 </div>
                 <div className="aspect-[3/4] w-full rounded-lg bg-zinc-50/40 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
                   <iframe
-                    src="https://drive.google.com/file/d/1gEhKBfnrB6aSulOJC2eM6R2u6wx8cZWb/preview"
+                    src={RESUME_PDF_PREVIEW}
                     className="h-full w-full rounded-lg"
                     allow="autoplay"
                   />

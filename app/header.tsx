@@ -134,7 +134,7 @@ export function Header() {
             className="text-base text-zinc-600 dark:text-zinc-400 mt-1"
             delay={0.5}
           >
-            Senior Applied AI Engineer
+            Solutions Architect · Field Engineering @ Databricks
           </TextEffect>
           <div className="mt-4 flex flex-col items-center space-y-3">
             <div className="flex space-x-6">
@@ -186,7 +186,7 @@ export function Header() {
               className="text-lg text-zinc-600 dark:text-zinc-400 mt-1"
               delay={0.5}
             >
-              Senior Applied AI Engineer
+              Solutions Architect · Field Engineering @ Databricks
             </TextEffect>
             <div className="mt-5 flex items-center space-x-6">
               <div className="flex space-x-5">
