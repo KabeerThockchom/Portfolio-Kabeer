@@ -247,8 +247,7 @@ type Recognition = {
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'Databricks',
-    title:
-      'Solutions Architect, Field Engineering - Retail, Travel & Hospitality',
+    title: 'Field Engineering - Retail, Travel & Hospitality',
     start: 'December 2025',
     end: 'Present',
     location: 'San Francisco, CA',
@@ -644,7 +643,7 @@ export function buildKnowledgeBase(): string {
   ).join('\n')
 
   return `About Kabeer Singh Thockchom:
-Kabeer is a Solutions Architect on the Field Engineering team at Databricks (Retail, Travel & Hospitality), based in San Francisco, CA. He has 4+ years of customer-facing AI experience and currently drives greenfield account strategy across 21+ Fortune 500 retail, travel, and hospitality accounts on the Databricks Lakehouse - running technical discovery with C-suite buyers, architecting migrations off Snowflake / BigQuery / Domo / Power BI / AS400, and shipping customer-facing demos and reusable reference assets. He is a hands-on builder of multi-agent platforms, LLM-powered demos, and RAG architectures shipped to 10+ Fortune 500 customers. He was a featured speaker at NVIDIA GTC 2025 and an EY hackathon winner. Contact: ${EMAIL}.
+Kabeer is part of the Field Engineering team at Databricks (Retail, Travel & Hospitality), based in San Francisco, CA. He has 4+ years of customer-facing AI experience and currently drives greenfield account strategy across 21+ Fortune 500 retail, travel, and hospitality accounts on the Databricks Lakehouse - running technical discovery with C-suite buyers, architecting migrations off Snowflake / BigQuery / Domo / Power BI / AS400, and shipping customer-facing demos and reusable reference assets. He is a hands-on builder of multi-agent platforms, LLM-powered demos, and RAG architectures shipped to 10+ Fortune 500 customers. He was a featured speaker at NVIDIA GTC 2025 and an EY hackathon winner. Contact: ${EMAIL}.
 
 Work Experience:
 ${experience}

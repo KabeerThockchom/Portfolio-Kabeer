@@ -13,9 +13,9 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Kabeer Thockchom - Solutions Architect @ Databricks',
+  title: 'Kabeer Thockchom - Field Engineering @ Databricks',
   description:
-    'Solutions Architect on the Field Engineering team at Databricks, building multi-agent platforms, LLM-powered demos, and RAG architectures for Fortune 500 retail, travel, and hospitality.',
+    'Part of the Field Engineering team at Databricks, building multi-agent platforms, LLM-powered demos, and RAG architectures for Fortune 500 retail, travel, and hospitality.',
 }
 
 const geist = Geist({

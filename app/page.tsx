@@ -291,7 +291,7 @@ export default function Personal() {
                 </motion.p>
 
                 <p className="mb-3 text-sm text-zinc-600 dark:text-zinc-400">
-                  I&apos;m a Solutions Architect on the Field Engineering team
+                  I&apos;m part of the Field Engineering team
                   at Databricks, covering greenfield Fortune 500 retail, travel,
                   and hospitality accounts. I run technical discovery with
                   C-suite buyers, architect end-to-end migrations off Snowflake,
