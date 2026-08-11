@@ -1,4 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm install -g npm@11 --prefix=/tmp/npm11 --no-audit --no-fund && /tmp/npm11/bin/npm ci --no-audit --no-fund"
-}
