@@ -1,8 +1,7 @@
 'use client'
-import { TextEffect } from '@/components/ui/text-effect'
 import Link from 'next/link'
 import Image from 'next/image'
-import { GithubIcon, LinkedinIcon } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 type SpotifyTrack = {
@@ -23,7 +22,7 @@ function HeaderSpotifyWidget() {
       try {
         const response = await fetch('/api/spotify')
         const data = await response.json()
-        setTrack(data)
+        setTrack(response.ok ? data : { isPlaying: false })
       } catch (error) {
         console.error('Error fetching Spotify data:', error)
         setTrack({ isPlaying: false })
@@ -61,7 +60,7 @@ function HeaderSpotifyWidget() {
           </svg>
         </div>
         <span className="text-xs text-zinc-500 dark:text-zinc-400">
-          Currently listening to nothing
+          Spotify · Not playing
         </span>
       </div>
     )
@@ -131,115 +130,29 @@ function HeaderSpotifyWidget() {
 
 export function Header() {
   return (
-    <header className="mb-6 sm:mb-8">
-      {/* Mobile Layout: Centered Stack */}
-      <div className="flex flex-col items-center text-center sm:hidden">
-        <div className="group relative h-24 w-24 cursor-pointer overflow-hidden rounded-full border-4 border-zinc-200 shadow-lg transition-all duration-300 hover:scale-105 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
-          <div className="absolute inset-0 z-10 hidden rounded-full bg-black/10 opacity-0 transition-opacity duration-300 group-hover:block group-hover:opacity-100 dark:bg-white/10"></div>
-          <Image
-            src="/kabeer.png"
-            alt="Kabeer Thockchom profile photo"
-            width={200}
-            height={200}
-            className="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3"
-          />
-        </div>
-        <div className="mt-4">
-          <Link
-            href="/"
-            className="text-xl font-bold text-black transition-colors hover:text-zinc-700 dark:text-white dark:hover:text-zinc-300"
-          >
-            Kabeer Thockchom
-          </Link>
-          <TextEffect
-            as="p"
-            preset="fade"
-            per="char"
-            className="mt-1 text-base text-zinc-600 dark:text-zinc-400"
-            delay={0.5}
-          >
-            Field Engineering @ Databricks
-          </TextEffect>
-          <div className="mt-4 flex flex-col items-center space-y-3">
-            <div className="flex space-x-6">
-              <a
-                href="https://github.com/KabeerThockchom"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-600 transition-all hover:scale-110 hover:text-orange-500 dark:text-zinc-400 dark:hover:text-orange-400"
-                aria-label="GitHub"
-              >
-                <GithubIcon size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/kabeerthockchom"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-600 transition-all hover:scale-110 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400"
-                aria-label="LinkedIn"
-              >
-                <LinkedinIcon size={24} />
-              </a>
-            </div>
-            <HeaderSpotifyWidget />
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop Layout: Horizontal */}
-      <div className="hidden items-center justify-between sm:flex">
-        <div className="flex items-center gap-6">
-          <div className="group relative h-28 w-28 cursor-pointer overflow-hidden rounded-full border-4 border-zinc-200 shadow-lg transition-all duration-300 hover:scale-105 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
-            <div className="absolute inset-0 z-10 hidden rounded-full bg-black/10 opacity-0 transition-opacity duration-300 group-hover:block group-hover:opacity-100 dark:bg-white/10"></div>
-            <Image
-              src="/kabeer.png"
-              alt="Kabeer Thockchom profile photo"
-              width={200}
-              height={200}
-              className="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3"
-            />
-          </div>
-          <div>
-            <Link
-              href="/"
-              className="text-2xl font-bold text-black transition-colors hover:text-zinc-700 dark:text-white dark:hover:text-zinc-300"
-            >
-              Kabeer Thockchom
-            </Link>
-            <TextEffect
-              as="p"
-              preset="fade"
-              per="char"
-              className="mt-1 text-lg text-zinc-600 dark:text-zinc-400"
-              delay={0.5}
-            >
-              Field Engineering @ Databricks
-            </TextEffect>
-            <div className="mt-5 flex items-center space-x-6">
-              <div className="flex space-x-5">
-                <a
-                  href="https://github.com/KabeerThockchom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-600 transition-all hover:scale-110 hover:text-orange-500 dark:text-zinc-400 dark:hover:text-orange-400"
-                  aria-label="GitHub"
-                >
-                  <GithubIcon size={28} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/kabeerthockchom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-600 transition-all hover:scale-110 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400"
-                  aria-label="LinkedIn"
-                >
-                  <LinkedinIcon size={28} />
-                </a>
-              </div>
-              <HeaderSpotifyWidget />
-            </div>
-          </div>
-        </div>
+    <header className="site-header">
+      <Link
+        href="/"
+        className="header-brand"
+        aria-label="Kabeer Thockchom, home"
+      >
+        <Image src="/kabeer.png" alt="" width={42} height={42} sizes="42px" />
+        <span>
+          Kabeer Thockchom<small>AI & Data Architecture</small>
+        </span>
+      </Link>
+      <nav aria-label="Main navigation">
+        <Link href="/#work">Work</Link>
+        <Link href="/#writing">Writing</Link>
+        <Link href="/#experience">Experience</Link>
+        <Link href="/#resume">Resume</Link>
+      </nav>
+      <Link className="header-contact" href="/#contact">
+        Let’s talk
+        <ArrowUpRight size={16} />
+      </Link>
+      <div className="header-spotify">
+        <HeaderSpotifyWidget />
       </div>
     </header>
   )
