@@ -239,9 +239,11 @@ function ResumeChat() {
       const data = await response.json()
       if (!response.ok || typeof data.response !== 'string')
         throw new Error(
-          response.status === 503
-            ? 'The assistant is temporarily unavailable. You can read my resume or contact me directly.'
-            : 'The assistant could not answer. Please try again or contact me directly.',
+          response.status === 429
+            ? 'The assistant is busy. Try again in a minute, or read my resume above.'
+            : response.status === 503 || response.status === 502
+              ? 'The assistant is temporarily unavailable. You can read my resume or contact me directly.'
+              : 'The assistant could not answer. Please try again or contact me directly.',
         )
       setMessages((previous) => [
         ...previous,

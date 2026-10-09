@@ -14,6 +14,6 @@ Use Node.js 22, then run `npm ci` and `npm run dev`. Run `npm run build` before 
 
 The contact form creates a mailto draft; it does not send messages from the server. Project videos and the resume preview load when opened.
 
-The existing Spotify integration uses `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN`. Resume chat uses `GROQ_API_KEY`. Keep secrets in Vercel environment settings or ignored local environment files.
+The existing Spotify integration uses `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN`. Resume chat uses `GROQ_API_KEY` and defaults to `openai/gpt-oss-120b`. Set the optional `GROQ_MODEL` environment variable to change models. Requests time out after 12 seconds, and completions are capped at 1,024 tokens. Keep secrets in Vercel environment settings or ignored local environment files.
 
 Enterprise project descriptions must remain generalized. Do not add customer names or confidential account information.
