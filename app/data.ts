@@ -1,4 +1,7 @@
-type Project = {
+export type Project = {
+  category: 'Agents' | 'Data & AI' | 'Applications'
+  featured?: boolean
+  summary?: string
   name: string
   description: string
   link: string
@@ -32,6 +35,46 @@ type SocialLink = {
   link: string
 }
 
+export const PROFILE = {
+  name: 'Kabeer Thockchom',
+  role: 'Field Engineering at Databricks',
+  location: 'San Francisco, California',
+  headline: 'AI systems for the real world.',
+  summary:
+    'I connect business problems with the data, AI, and engineering needed to solve them.',
+  about:
+    'At Databricks, I work with enterprise teams on AI architecture, data platforms, and hands-on demos. Before that, I built enterprise AI and data solutions at EY.',
+  perspective:
+    'My background in economics and statistics shapes how I build: define the decision, test the assumptions, and measure the result.',
+  interests: [
+    'AI & data',
+    'Economics',
+    'Tennis',
+    'Real Madrid',
+    'Hiking',
+    'Dogs',
+    'Tea',
+  ],
+}
+
+export const APPROACH = [
+  {
+    title: 'Understand the decision.',
+    description:
+      'Start with the people, the problem, and the outcome they need.',
+  },
+  {
+    title: 'Design the foundation.',
+    description:
+      'Make data flow, business definitions, access, and failure cases explicit.',
+  },
+  {
+    title: 'Build and evaluate.',
+    description:
+      'Connect the full system. Test correctness, latency, cost, and usability.',
+  },
+]
+
 export const PROJECTS: Project[] = [
   {
     name: 'Multi-Agent Retail Ops Reference Architecture',
@@ -40,6 +83,10 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-maops',
+    summary:
+      'A Supervisor agent coordinates forecasting, pricing, inventory, and labor over a governed data platform. Built as a reusable reference architecture.',
+    category: 'Agents',
+    featured: true,
     techStack: [
       'Databricks',
       'Unity Catalog',
@@ -57,6 +104,9 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-smallville',
+    summary:
+      'A retail simulation where AI customer agents generate events for an operations platform. Human approvals connect autonomous agents to business decisions.',
+    category: 'Agents',
     techStack: [
       'Databricks',
       'LLM Agents',
@@ -73,6 +123,9 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/KabeerThockchom/coding-agents-databricks-apps',
     video: '',
     id: 'project-coda',
+    summary:
+      'Browser-controlling agents deployed on Databricks Apps. A reference application for tool use, orchestration, and repeatable deployment.',
+    category: 'Agents',
     techStack: [
       'Databricks Apps',
       'Browser Agents',
@@ -91,6 +144,10 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1oT3xnwTZi8zCe6ZMcJKGuIJqAsPttJKA/view?usp=drive_link',
     id: 'project-portfolioai',
+    summary:
+      'Talk to market data through a voice interface. Real-time audio, function calling, and interactive charts connect questions to useful context.',
+    category: 'Applications',
+    featured: true,
     techStack: [
       'Next.js',
       'React',
@@ -111,6 +168,10 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1dUvFzEmn0e5xz2SsDUUBPUYxhTH9TyOY/view?usp=drive_link',
     id: 'project-text2sql',
+    summary:
+      'Turn a business question into SQL and a visual answer. Schema context, query intent, and result checks support natural-language analytics.',
+    category: 'Data & AI',
+    featured: true,
     techStack: [
       'React',
       'OpenAI',
@@ -131,6 +192,10 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/156tYjIsuSYuKiqOXkwKdfgZ1l5xfi7S1/view?usp=drive_link',
     id: 'project-eyvoice',
+    summary:
+      'Connect speech, language models, and operational data to help contact center teams analyze calls, find context, and support agents.',
+    category: 'Data & AI',
+    featured: true,
     techStack: [
       'React',
       'Azure OpenAI',
@@ -149,6 +214,9 @@ export const PROJECTS: Project[] = [
     video:
       'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     id: 'project-bottega',
+    summary:
+      'A restaurant voice agent that queries menus, builds orders, and calls tools for checkout. An exploration of useful conversational commerce.',
+    category: 'Agents',
     techStack: [
       'React',
       'Twilio',
@@ -167,6 +235,9 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1iYCLIs7553I11xkgzTnHVHdfGPERA6lj/view?usp=drive_link',
     id: 'project-eylar',
+    summary:
+      'A document retrieval and generation platform with parsing, embedding, vector search, and source citations. Designed for enterprise knowledge workflows.',
+    category: 'Data & AI',
     techStack: ['React', 'LangGraph', 'Qdrant', 'Ollama', 'RAG', 'Docker'],
   },
   {
@@ -177,6 +248,9 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1PrIoQKUO4N8YIwn-y2EsHkNyfvm8xgDG/view?usp=drive_link',
     id: 'project-genui',
+    summary:
+      'An AI conversation that renders the right interface as the context changes. Built with LangGraph.js and the Vercel AI SDK.',
+    category: 'Applications',
     techStack: ['React', 'LangGraph.js', 'OpenAI', 'Vercel AI SDK', 'Docker'],
   },
   {
@@ -187,6 +261,9 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1EHut11qbjjMfP9NFr_PehOyNb5ul_bfK/view?usp=drive_link',
     id: 'project-monopoly',
+    summary:
+      'A game that puts language models into the same environment to trade, negotiate, and make decisions against human players.',
+    category: 'Applications',
     techStack: ['JavaScript', 'OpenAI', 'Anthropic', 'Gemini'],
   },
   {
@@ -197,6 +274,9 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1m6AdQYB-GxmgYwFx4Fp04wxOTGIfVmyP/view?usp=drive_link',
     id: 'project-etfai',
+    summary:
+      'Natural-language exploration of ETF data with interactive visualizations. A practical application of AI to financial analytics.',
+    category: 'Data & AI',
     techStack: ['React', 'Snowflake', 'OpenAI', 'Docker'],
   },
 ]
@@ -353,7 +433,7 @@ export const EDUCATION: Education[] = [
   },
   {
     school: 'University of California, Davis',
-    degree: 'B.S. Computer Science & Quantitative Economics',
+    degree: 'B.A. Economics — Econometrics & Quantitative Economics',
     location: 'Davis, CA',
     start: 'September 2019',
     end: 'June 2023',
@@ -361,10 +441,10 @@ export const EDUCATION: Education[] = [
     minors: ['Statistics', 'Technology Management'],
     honors: ["Dean's Scholar (2020-2022)", 'March Fund Award (2022)'],
     coursework: [
-      'Machine Learning',
-      'Database Systems',
-      'Statistical Analysis',
-      'HCI',
+      'Econometrics',
+      'Regression Analysis',
+      'Statistical Data Science',
+      'Game Theory',
     ],
     logo: '/logos/ucdavis.svg',
     id: 'edu2',
@@ -598,7 +678,7 @@ export const RECOGNITION: Recognition[] = [
 
 export const EMAIL = 'thockchomkabeer@gmail.com'
 
-export const LAST_UPDATED = '2026-08-07'
+export const LAST_UPDATED = '2026-10-09'
 
 // Resume-tab PDF: self-hosted download + Google Drive preview.
 export const RESUME_PDF_DOWNLOAD = '/Kabeer_Thockchom_Resume.pdf'
@@ -643,7 +723,9 @@ export function buildKnowledgeBase(): string {
   ).join('\n')
 
   return `About Kabeer Singh Thockchom:
-Kabeer is part of the Field Engineering team at Databricks (Retail, Travel & Hospitality), based in San Francisco, CA. He has 4+ years of customer-facing AI experience and currently drives greenfield account strategy across 21+ Fortune 500 retail, travel, and hospitality accounts on the Databricks Lakehouse - running technical discovery with C-suite buyers, architecting migrations off Snowflake / BigQuery / Domo / Power BI / AS400, and shipping customer-facing demos and reusable reference assets. He is a hands-on builder of multi-agent platforms, LLM-powered demos, and RAG architectures shipped to 10+ Fortune 500 customers. He was a featured speaker at NVIDIA GTC 2025 and an EY hackathon winner. Contact: ${EMAIL}.
+${PROFILE.name} — ${PROFILE.role}, based in ${PROFILE.location}.
+${PROFILE.summary} ${PROFILE.about} ${PROFILE.perspective}
+Contact: ${EMAIL}.
 
 Work Experience:
 ${experience}
@@ -663,7 +745,8 @@ ${certs}
 Recognition & Speaking:
 ${recognition}
 
-Mission: Bridge the gap between cutting-edge AI technology and practical business solutions, creating products that showcase technical excellence and solve real-world problems.
+Approach:
+${APPROACH.map((step) => `${step.title} ${step.description}`).join('\n')}
 
-Personal Interests: AI/ML, Economics, Product Development/Management, Dogs, Tea, Hiking, Movies. Fascinated by the intersection of AI, business, and human-centered design; believes in building technology that enhances human capabilities rather than replacing them.`
+Personal Interests: ${PROFILE.interests.join(', ')}.`
 }

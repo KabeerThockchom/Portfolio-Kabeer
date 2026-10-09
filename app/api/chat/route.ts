@@ -9,11 +9,24 @@ const KABEER_KNOWLEDGE = buildKnowledgeBase()
 
 export async function POST(request: NextRequest) {
   try {
-    const { message } = await request.json()
-
-    if (!message) {
+    let payload: { message?: unknown } | null
+    try {
+      payload = await request.json()
+    } catch {
       return NextResponse.json(
-        { error: 'Message is required' },
+        { error: 'Invalid JSON request' },
+        { status: 400 },
+      )
+    }
+    const message = payload?.message
+
+    if (
+      typeof message !== 'string' ||
+      !message.trim() ||
+      message.length > 2000
+    ) {
+      return NextResponse.json(
+        { error: 'Enter a message between 1 and 2000 characters.' },
         { status: 400 },
       )
     }
@@ -48,7 +61,7 @@ Guidelines:
         },
         {
           role: 'user',
-          content: message,
+          content: message.trim(),
         },
       ],
       model: 'llama-3.3-70b-versatile',
