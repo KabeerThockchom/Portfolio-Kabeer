@@ -3,6 +3,8 @@ export type Project = {
   featured?: boolean
   summary?: string
   name: string
+  image: string
+  imageAlt: string
   description: string
   link: string
   video: string
@@ -83,8 +85,11 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-maops',
+    image: '/projects/retail-ops.webp',
+    imageAlt:
+      'A miniature retail warehouse linked to a central supervisor sphere.',
     summary:
-      'A Supervisor agent coordinates forecasting, pricing, inventory, and labor over a governed data platform. Built as a reusable reference architecture.',
+      'A supervisor agent coordinates forecasting, pricing, inventory, and labor on Databricks.',
     category: 'Agents',
     featured: true,
     techStack: [
@@ -104,8 +109,10 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-smallville',
+    image: '/projects/retail-simulation.webp',
+    imageAlt: 'A miniature retail neighborhood with connected customer agents.',
     summary:
-      'A retail simulation where AI customer agents generate events for an operations platform. Human approvals connect autonomous agents to business decisions.',
+      'AI customer agents simulate retail activity with streaming events and human approvals.',
     category: 'Agents',
     techStack: [
       'Databricks',
@@ -123,8 +130,9 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/KabeerThockchom/coding-agents-databricks-apps',
     video: '',
     id: 'project-coda',
-    summary:
-      'Browser-controlling agents deployed on Databricks Apps. A reference application for tool use, orchestration, and repeatable deployment.',
+    image: '/projects/browser-agents.webp',
+    imageAlt: 'A silver cursor moves through sculptural browser windows.',
+    summary: 'Browser automation agents deployed on Databricks Apps.',
     category: 'Agents',
     techStack: [
       'Databricks Apps',
@@ -144,8 +152,11 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1oT3xnwTZi8zCe6ZMcJKGuIJqAsPttJKA/view?usp=drive_link',
     id: 'project-portfolioai',
+    image: '/projects/voice-finance.webp',
+    imageAlt:
+      'A chrome voice interface surrounded by abstract financial charts.',
     summary:
-      'Talk to market data through a voice interface. Real-time audio, function calling, and interactive charts connect questions to useful context.',
+      'A voice assistant for market data, function calls, and interactive charts.',
     category: 'Applications',
     featured: true,
     techStack: [
@@ -168,8 +179,10 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1dUvFzEmn0e5xz2SsDUUBPUYxhTH9TyOY/view?usp=drive_link',
     id: 'project-text2sql',
-    summary:
-      'Turn a business question into SQL and a visual answer. Schema context, query intent, and result checks support natural-language analytics.',
+    image: '/projects/text-to-sql.webp',
+    imageAlt:
+      'A speech bubble connects a database with a structured data table.',
+    summary: 'Business questions become SQL queries and visual answers.',
     category: 'Data & AI',
     featured: true,
     techStack: [
@@ -192,8 +205,11 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/156tYjIsuSYuKiqOXkwKdfgZ1l5xfi7S1/view?usp=drive_link',
     id: 'project-eyvoice',
+    image: '/projects/ey-voice.webp',
+    imageAlt:
+      'A black headset frames a silver audio waveform and conversation tiles.',
     summary:
-      'Connect speech, language models, and operational data to help contact center teams analyze calls, find context, and support agents.',
+      'Real-time speech analytics and contextual assistance for contact center teams.',
     category: 'Data & AI',
     featured: true,
     techStack: [
@@ -214,8 +230,10 @@ export const PROJECTS: Project[] = [
     video:
       'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     id: 'project-bottega',
-    summary:
-      'A restaurant voice agent that queries menus, builds orders, and calls tools for checkout. An exploration of useful conversational commerce.',
+    image: '/projects/restaurant-agent.webp',
+    imageAlt:
+      'A restaurant place setting with a menu and a sculptural soundwave.',
+    summary: 'A voice agent for restaurant menus, orders, and checkout.',
     category: 'Agents',
     techStack: [
       'React',
@@ -235,8 +253,11 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1iYCLIs7553I11xkgzTnHVHdfGPERA6lj/view?usp=drive_link',
     id: 'project-eylar',
+    image: '/projects/enterprise-rag.webp',
+    imageAlt:
+      'A silver lens selects a source from a sculptural document archive.',
     summary:
-      'A document retrieval and generation platform with parsing, embedding, vector search, and source citations. Designed for enterprise knowledge workflows.',
+      'Enterprise document search with retrieval, generation, and source citations.',
     category: 'Data & AI',
     techStack: ['React', 'LangGraph', 'Qdrant', 'Ollama', 'RAG', 'Docker'],
   },
@@ -248,8 +269,11 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1PrIoQKUO4N8YIwn-y2EsHkNyfvm8xgDG/view?usp=drive_link',
     id: 'project-genui',
+    image: '/projects/generative-banking.webp',
+    imageAlt:
+      'Modular banking interface panels unfold around a conversation orb.',
     summary:
-      'An AI conversation that renders the right interface as the context changes. Built with LangGraph.js and the Vercel AI SDK.',
+      'An AI conversation that assembles banking interfaces as context changes.',
     category: 'Applications',
     techStack: ['React', 'LangGraph.js', 'OpenAI', 'Vercel AI SDK', 'Docker'],
   },
@@ -261,8 +285,11 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1EHut11qbjjMfP9NFr_PehOyNb5ul_bfK/view?usp=drive_link',
     id: 'project-monopoly',
+    image: '/projects/ai-game-arena.webp',
+    imageAlt:
+      'Abstract player tokens gather around a monochrome strategy game.',
     summary:
-      'A game that puts language models into the same environment to trade, negotiate, and make decisions against human players.',
+      'Language models trade and negotiate with each other and human players.',
     category: 'Applications',
     techStack: ['JavaScript', 'OpenAI', 'Anthropic', 'Gemini'],
   },
@@ -274,8 +301,10 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1m6AdQYB-GxmgYwFx4Fp04wxOTGIfVmyP/view?usp=drive_link',
     id: 'project-etfai',
-    summary:
-      'Natural-language exploration of ETF data with interactive visualizations. A practical application of AI to financial analytics.',
+    image: '/projects/etf-analytics.webp',
+    imageAlt:
+      'Glass investment baskets contain different groups of geometric assets.',
+    summary: 'Natural-language ETF exploration with interactive charts.',
     category: 'Data & AI',
     techStack: ['React', 'Snowflake', 'OpenAI', 'Docker'],
   },

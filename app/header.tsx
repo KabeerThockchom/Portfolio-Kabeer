@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
@@ -38,40 +37,14 @@ function HeaderSpotifyWidget() {
     return () => clearInterval(interval)
   }, [])
 
-  if (loading) {
-    return (
-      <div className="flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/80">
-        <div className="h-6 w-6 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700"></div>
-        <div className="h-3 w-16 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700"></div>
-      </div>
-    )
-  }
-
-  if (!track.isPlaying && !track.title) {
-    return (
-      <div className="flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/80">
-        <div className="flex h-6 w-6 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800">
-          <svg
-            className="h-3 w-3 text-zinc-400"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
-          </svg>
-        </div>
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">
-          Spotify · Not playing
-        </span>
-      </div>
-    )
-  }
+  if (loading || !track.isPlaying) return null
 
   return (
     <a
       href={track.songUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm transition-all hover:border-green-300 hover:bg-green-50/80 dark:border-zinc-700 dark:bg-zinc-900/80 dark:hover:border-green-600 dark:hover:bg-green-950/50"
+      className="group flex items-center space-x-2 rounded-lg border border-neutral-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm transition-all hover:border-neutral-300 hover:bg-neutral-50/80 dark:border-neutral-700 dark:bg-neutral-900/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-950/50"
       title={`${track.title} by ${track.artist}`}
     >
       {track.albumImageUrl ? (
@@ -81,9 +54,9 @@ function HeaderSpotifyWidget() {
           className="h-6 w-6 rounded object-cover"
         />
       ) : (
-        <div className="flex h-6 w-6 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800">
+        <div className="flex h-6 w-6 items-center justify-center rounded bg-neutral-100 dark:bg-neutral-800">
           <svg
-            className="h-3 w-3 text-zinc-400"
+            className="h-3 w-3 text-neutral-400"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -92,33 +65,33 @@ function HeaderSpotifyWidget() {
         </div>
       )}
       <div className="flex min-w-0 flex-col">
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">
+        <span className="text-xs text-neutral-500 dark:text-neutral-400">
           Currently listening to
         </span>
         <div className="flex items-center space-x-1">
           {track.isPlaying && (
             <div className="flex space-x-0.5">
-              <div className="h-2 w-0.5 animate-pulse bg-green-500"></div>
+              <div className="h-2 w-0.5 animate-pulse bg-neutral-500"></div>
               <div
-                className="h-1.5 w-0.5 animate-pulse bg-green-500"
+                className="h-1.5 w-0.5 animate-pulse bg-neutral-500"
                 style={{ animationDelay: '0.1s' }}
               ></div>
               <div
-                className="h-2.5 w-0.5 animate-pulse bg-green-500"
+                className="h-2.5 w-0.5 animate-pulse bg-neutral-500"
                 style={{ animationDelay: '0.2s' }}
               ></div>
             </div>
           )}
-          <span className="max-w-[180px] truncate text-xs font-medium text-zinc-900 dark:text-zinc-100">
+          <span className="max-w-[180px] truncate text-xs font-medium text-neutral-900 dark:text-neutral-100">
             {track.title}
           </span>
         </div>
-        <span className="max-w-[180px] truncate text-xs text-zinc-500 dark:text-zinc-400">
+        <span className="max-w-[180px] truncate text-xs text-neutral-500 dark:text-neutral-400">
           by {track.artist}
         </span>
       </div>
       <svg
-        className="h-3 w-3 text-green-500 opacity-0 transition-opacity group-hover:opacity-100"
+        className="h-3 w-3 text-neutral-500 opacity-0 transition-opacity group-hover:opacity-100"
         fill="currentColor"
         viewBox="0 0 24 24"
       >
@@ -136,19 +109,16 @@ export function Header() {
         className="header-brand"
         aria-label="Kabeer Thockchom, home"
       >
-        <Image src="/kabeer.png" alt="" width={42} height={42} sizes="42px" />
-        <span>
-          Kabeer Thockchom<small>AI & Data Architecture</small>
-        </span>
+        Kabeer Thockchom
       </Link>
       <nav aria-label="Main navigation">
         <Link href="/#work">Work</Link>
         <Link href="/#writing">Writing</Link>
-        <Link href="/#experience">Experience</Link>
+        <Link href="/#experience">Background</Link>
         <Link href="/#resume">Resume</Link>
       </nav>
       <Link className="header-contact" href="/#contact">
-        Let’s talk
+        Contact
         <ArrowUpRight size={16} />
       </Link>
       <div className="header-spotify">

@@ -9,12 +9,9 @@ export function Footer() {
   useEffect(() => setMounted(true), [])
   return (
     <footer className="site-footer">
-      <div>
-        <a className="footer-name" href="/">
-          Kabeer Thockchom
-        </a>
-        <p>AI & Data Architecture · San Francisco</p>
-      </div>
+      <p className="footer-note">
+        © {new Date().getFullYear()} Kabeer Thockchom
+      </p>
       <div className="footer-links">
         <a
           href="https://github.com/KabeerThockchom"
@@ -52,10 +49,6 @@ export function Footer() {
             </button>
           ))}
       </div>
-      <p className="footer-note">
-        © {new Date().getFullYear()} Kabeer Thockchom. Personal site. Views are
-        my own.
-      </p>
     </footer>
   )
 }
