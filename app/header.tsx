@@ -1,6 +1,8 @@
 'use client'
+import { TextEffect } from '@/components/ui/text-effect'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import { GithubIcon, LinkedinIcon } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 type SpotifyTrack = {
@@ -21,7 +23,7 @@ function HeaderSpotifyWidget() {
       try {
         const response = await fetch('/api/spotify')
         const data = await response.json()
-        setTrack(response.ok ? data : { isPlaying: false })
+        setTrack(data)
       } catch (error) {
         console.error('Error fetching Spotify data:', error)
         setTrack({ isPlaying: false })
@@ -37,14 +39,40 @@ function HeaderSpotifyWidget() {
     return () => clearInterval(interval)
   }, [])
 
-  if (loading || !track.isPlaying) return null
+  if (loading) {
+    return (
+      <div className="flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/80">
+        <div className="h-6 w-6 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700"></div>
+        <div className="h-3 w-16 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700"></div>
+      </div>
+    )
+  }
+
+  if (!track.isPlaying && !track.title) {
+    return (
+      <div className="flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/80">
+        <div className="flex h-6 w-6 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800">
+          <svg
+            className="h-3 w-3 text-zinc-400"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+          </svg>
+        </div>
+        <span className="text-xs text-zinc-500 dark:text-zinc-400">
+          Currently listening to nothing
+        </span>
+      </div>
+    )
+  }
 
   return (
     <a
       href={track.songUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center space-x-2 rounded-lg border border-neutral-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm transition-all hover:border-neutral-300 hover:bg-neutral-50/80 dark:border-neutral-700 dark:bg-neutral-900/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-950/50"
+      className="group flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm transition-all hover:border-green-300 hover:bg-green-50/80 dark:border-zinc-700 dark:bg-zinc-900/80 dark:hover:border-green-600 dark:hover:bg-green-950/50"
       title={`${track.title} by ${track.artist}`}
     >
       {track.albumImageUrl ? (
@@ -54,9 +82,9 @@ function HeaderSpotifyWidget() {
           className="h-6 w-6 rounded object-cover"
         />
       ) : (
-        <div className="flex h-6 w-6 items-center justify-center rounded bg-neutral-100 dark:bg-neutral-800">
+        <div className="flex h-6 w-6 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800">
           <svg
-            className="h-3 w-3 text-neutral-400"
+            className="h-3 w-3 text-zinc-400"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -65,33 +93,33 @@ function HeaderSpotifyWidget() {
         </div>
       )}
       <div className="flex min-w-0 flex-col">
-        <span className="text-xs text-neutral-500 dark:text-neutral-400">
+        <span className="text-xs text-zinc-500 dark:text-zinc-400">
           Currently listening to
         </span>
         <div className="flex items-center space-x-1">
           {track.isPlaying && (
             <div className="flex space-x-0.5">
-              <div className="h-2 w-0.5 animate-pulse bg-neutral-500"></div>
+              <div className="h-2 w-0.5 animate-pulse bg-green-500"></div>
               <div
-                className="h-1.5 w-0.5 animate-pulse bg-neutral-500"
+                className="h-1.5 w-0.5 animate-pulse bg-green-500"
                 style={{ animationDelay: '0.1s' }}
               ></div>
               <div
-                className="h-2.5 w-0.5 animate-pulse bg-neutral-500"
+                className="h-2.5 w-0.5 animate-pulse bg-green-500"
                 style={{ animationDelay: '0.2s' }}
               ></div>
             </div>
           )}
-          <span className="max-w-[180px] truncate text-xs font-medium text-neutral-900 dark:text-neutral-100">
+          <span className="max-w-[180px] truncate text-xs font-medium text-zinc-900 dark:text-zinc-100">
             {track.title}
           </span>
         </div>
-        <span className="max-w-[180px] truncate text-xs text-neutral-500 dark:text-neutral-400">
+        <span className="max-w-[180px] truncate text-xs text-zinc-500 dark:text-zinc-400">
           by {track.artist}
         </span>
       </div>
       <svg
-        className="h-3 w-3 text-neutral-500 opacity-0 transition-opacity group-hover:opacity-100"
+        className="h-3 w-3 text-green-500 opacity-0 transition-opacity group-hover:opacity-100"
         fill="currentColor"
         viewBox="0 0 24 24"
       >
@@ -103,26 +131,115 @@ function HeaderSpotifyWidget() {
 
 export function Header() {
   return (
-    <header className="site-header">
-      <Link
-        href="/"
-        className="header-brand"
-        aria-label="Kabeer Thockchom, home"
-      >
-        Kabeer Thockchom
-      </Link>
-      <nav aria-label="Main navigation">
-        <Link href="/#work">Work</Link>
-        <Link href="/#writing">Writing</Link>
-        <Link href="/#experience">Background</Link>
-        <Link href="/#resume">Resume</Link>
-      </nav>
-      <Link className="header-contact" href="/#contact">
-        Contact
-        <ArrowUpRight size={16} />
-      </Link>
-      <div className="header-spotify">
-        <HeaderSpotifyWidget />
+    <header className="mb-6 sm:mb-8">
+      {/* Mobile Layout: Centered Stack */}
+      <div className="flex flex-col items-center text-center sm:hidden">
+        <div className="group relative h-24 w-24 cursor-pointer overflow-hidden rounded-full border-4 border-zinc-200 shadow-lg transition-all duration-300 hover:scale-105 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
+          <div className="absolute inset-0 z-10 hidden rounded-full bg-black/10 opacity-0 transition-opacity duration-300 group-hover:block group-hover:opacity-100 dark:bg-white/10"></div>
+          <Image
+            src="/kabeer.png"
+            alt="Kabeer Thockchom profile photo"
+            width={200}
+            height={200}
+            className="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3"
+          />
+        </div>
+        <div className="mt-4">
+          <Link
+            href="/"
+            className="text-xl font-bold text-black transition-colors hover:text-zinc-700 dark:text-white dark:hover:text-zinc-300"
+          >
+            Kabeer Thockchom
+          </Link>
+          <TextEffect
+            as="p"
+            preset="fade"
+            per="char"
+            className="mt-1 text-base text-zinc-600 dark:text-zinc-400"
+            delay={0.5}
+          >
+            Field Engineering @ Databricks
+          </TextEffect>
+          <div className="mt-4 flex flex-col items-center space-y-3">
+            <div className="flex space-x-6">
+              <a
+                href="https://github.com/KabeerThockchom"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-600 transition-all hover:scale-110 hover:text-orange-500 dark:text-zinc-400 dark:hover:text-orange-400"
+                aria-label="GitHub"
+              >
+                <GithubIcon size={24} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/kabeerthockchom"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-600 transition-all hover:scale-110 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400"
+                aria-label="LinkedIn"
+              >
+                <LinkedinIcon size={24} />
+              </a>
+            </div>
+            <HeaderSpotifyWidget />
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Layout: Horizontal */}
+      <div className="hidden items-center justify-between sm:flex">
+        <div className="flex items-center gap-6">
+          <div className="group relative h-28 w-28 cursor-pointer overflow-hidden rounded-full border-4 border-zinc-200 shadow-lg transition-all duration-300 hover:scale-105 hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500">
+            <div className="absolute inset-0 z-10 hidden rounded-full bg-black/10 opacity-0 transition-opacity duration-300 group-hover:block group-hover:opacity-100 dark:bg-white/10"></div>
+            <Image
+              src="/kabeer.png"
+              alt="Kabeer Thockchom profile photo"
+              width={200}
+              height={200}
+              className="h-full w-full transform object-cover transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3"
+            />
+          </div>
+          <div>
+            <Link
+              href="/"
+              className="text-2xl font-bold text-black transition-colors hover:text-zinc-700 dark:text-white dark:hover:text-zinc-300"
+            >
+              Kabeer Thockchom
+            </Link>
+            <TextEffect
+              as="p"
+              preset="fade"
+              per="char"
+              className="mt-1 text-lg text-zinc-600 dark:text-zinc-400"
+              delay={0.5}
+            >
+              Field Engineering @ Databricks
+            </TextEffect>
+            <div className="mt-5 flex items-center space-x-6">
+              <div className="flex space-x-5">
+                <a
+                  href="https://github.com/KabeerThockchom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-600 transition-all hover:scale-110 hover:text-orange-500 dark:text-zinc-400 dark:hover:text-orange-400"
+                  aria-label="GitHub"
+                >
+                  <GithubIcon size={28} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/kabeerthockchom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-600 transition-all hover:scale-110 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedinIcon size={28} />
+                </a>
+              </div>
+              <HeaderSpotifyWidget />
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   )

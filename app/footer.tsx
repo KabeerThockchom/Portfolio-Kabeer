@@ -1,53 +1,84 @@
 'use client'
-import { Monitor, Moon, Sun, ArrowUpRight } from 'lucide-react'
+import { AnimatedBackground } from '@/components/ui/animated-background'
+import { TextLoop } from '@/components/ui/text-loop'
+import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
-export function Footer() {
-  const { theme, setTheme } = useTheme()
+const THEMES_OPTIONS = [
+  {
+    label: 'Light',
+    id: 'light',
+    icon: <SunIcon className="h-4 w-4" />,
+  },
+  {
+    label: 'Dark',
+    id: 'dark',
+    icon: <MoonIcon className="h-4 w-4" />,
+  },
+  {
+    label: 'System',
+    id: 'system',
+    icon: <MonitorIcon className="h-4 w-4" />,
+  },
+]
+
+function ThemeSwitch() {
   const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
+  const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
+
   return (
-    <footer className="site-footer">
-      <p className="footer-note">
-        © {new Date().getFullYear()} Kabeer Thockchom
-      </p>
-      <div className="footer-links">
-        <a
-          href="https://github.com/KabeerThockchom"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-          <ArrowUpRight size={12} />
+    <AnimatedBackground
+      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
+      defaultValue={theme}
+      transition={{
+        type: 'spring',
+        bounce: 0,
+        duration: 0.2,
+      }}
+      enableHover={false}
+      onValueChange={(id) => {
+        setTheme(id as string)
+      }}
+    >
+      {THEMES_OPTIONS.map((theme) => {
+        return (
+          <button
+            key={theme.id}
+            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
+            type="button"
+            aria-label={`Switch to ${theme.label} theme`}
+            data-id={theme.id}
+          >
+            {theme.icon}
+          </button>
+        )
+      })}
+    </AnimatedBackground>
+  )
+}
+
+export function Footer() {
+  return (
+    <footer className="mt-4 border-t border-zinc-100 px-0 py-3 dark:border-zinc-800">
+      <div className="flex items-center justify-between">
+        <a href="https://github.com/kabeerthockchom" target="_blank">
+          <TextLoop className="text-xs text-zinc-500">
+            <span>©Kabeer Thockchom.</span>
+            <span>Built with ❤️ by Kabeer Thockchom x Claude Code.</span>
+          </TextLoop>
         </a>
-        <a
-          href="https://www.linkedin.com/in/kabeerthockchom"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-          <ArrowUpRight size={12} />
-        </a>
-        <a href="#main">Back to top ↑</a>
-      </div>
-      <div className="theme-options" role="group" aria-label="Color theme">
-        {mounted &&
-          [
-            { id: 'light', label: 'Light', Icon: Sun },
-            { id: 'dark', label: 'Dark', Icon: Moon },
-            { id: 'system', label: 'System', Icon: Monitor },
-          ].map(({ id, label, Icon }) => (
-            <button
-              key={id}
-              type="button"
-              aria-label={`Switch to ${label} theme`}
-              aria-pressed={theme === id}
-              onClick={() => setTheme(id)}
-            >
-              <Icon size={15} />
-            </button>
-          ))}
+        <div className="text-xs text-zinc-400">
+          <ThemeSwitch />
+        </div>
       </div>
     </footer>
   )

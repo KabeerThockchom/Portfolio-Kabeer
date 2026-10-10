@@ -1,10 +1,5 @@
-export type Project = {
-  category: 'Agents' | 'Data & AI' | 'Applications'
-  featured?: boolean
-  summary?: string
+type Project = {
   name: string
-  image: string
-  imageAlt: string
   description: string
   link: string
   video: string
@@ -37,46 +32,6 @@ type SocialLink = {
   link: string
 }
 
-export const PROFILE = {
-  name: 'Kabeer Thockchom',
-  role: 'Field Engineering at Databricks',
-  location: 'San Francisco, California',
-  headline: 'AI systems for the real world.',
-  summary:
-    'I connect business problems with the data, AI, and engineering needed to solve them.',
-  about:
-    'At Databricks, I work with enterprise teams on AI architecture, data platforms, and hands-on demos. Before that, I built enterprise AI and data solutions at EY.',
-  perspective:
-    'My background in economics and statistics shapes how I build: define the decision, test the assumptions, and measure the result.',
-  interests: [
-    'AI & data',
-    'Economics',
-    'Tennis',
-    'Real Madrid',
-    'Hiking',
-    'Dogs',
-    'Tea',
-  ],
-}
-
-export const APPROACH = [
-  {
-    title: 'Understand the decision.',
-    description:
-      'Start with the people, the problem, and the outcome they need.',
-  },
-  {
-    title: 'Design the foundation.',
-    description:
-      'Make data flow, business definitions, access, and failure cases explicit.',
-  },
-  {
-    title: 'Build and evaluate.',
-    description:
-      'Connect the full system. Test correctness, latency, cost, and usability.',
-  },
-]
-
 export const PROJECTS: Project[] = [
   {
     name: 'Multi-Agent Retail Ops Reference Architecture',
@@ -85,13 +40,6 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-maops',
-    image: '/projects/retail-ops.webp',
-    imageAlt:
-      'A miniature retail warehouse linked to a central supervisor sphere.',
-    summary:
-      'A supervisor agent coordinates forecasting, pricing, inventory, and labor on Databricks.',
-    category: 'Agents',
-    featured: true,
     techStack: [
       'Databricks',
       'Unity Catalog',
@@ -109,11 +57,6 @@ export const PROJECTS: Project[] = [
     link: 'https://www.databricks.com/product/artificial-intelligence',
     video: '',
     id: 'project-smallville',
-    image: '/projects/retail-simulation.webp',
-    imageAlt: 'A miniature retail neighborhood with connected customer agents.',
-    summary:
-      'AI customer agents simulate retail activity with streaming events and human approvals.',
-    category: 'Agents',
     techStack: [
       'Databricks',
       'LLM Agents',
@@ -130,10 +73,6 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/KabeerThockchom/coding-agents-databricks-apps',
     video: '',
     id: 'project-coda',
-    image: '/projects/browser-agents.webp',
-    imageAlt: 'A silver cursor moves through sculptural browser windows.',
-    summary: 'Browser automation agents deployed on Databricks Apps.',
-    category: 'Agents',
     techStack: [
       'Databricks Apps',
       'Browser Agents',
@@ -152,13 +91,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1oT3xnwTZi8zCe6ZMcJKGuIJqAsPttJKA/view?usp=drive_link',
     id: 'project-portfolioai',
-    image: '/projects/voice-finance.webp',
-    imageAlt:
-      'A chrome voice interface surrounded by abstract financial charts.',
-    summary:
-      'A voice assistant for market data, function calls, and interactive charts.',
-    category: 'Applications',
-    featured: true,
     techStack: [
       'Next.js',
       'React',
@@ -179,12 +111,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1dUvFzEmn0e5xz2SsDUUBPUYxhTH9TyOY/view?usp=drive_link',
     id: 'project-text2sql',
-    image: '/projects/text-to-sql.webp',
-    imageAlt:
-      'A speech bubble connects a database with a structured data table.',
-    summary: 'Business questions become SQL queries and visual answers.',
-    category: 'Data & AI',
-    featured: true,
     techStack: [
       'React',
       'OpenAI',
@@ -205,13 +131,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/156tYjIsuSYuKiqOXkwKdfgZ1l5xfi7S1/view?usp=drive_link',
     id: 'project-eyvoice',
-    image: '/projects/ey-voice.webp',
-    imageAlt:
-      'A black headset frames a silver audio waveform and conversation tiles.',
-    summary:
-      'Real-time speech analytics and contextual assistance for contact center teams.',
-    category: 'Data & AI',
-    featured: true,
     techStack: [
       'React',
       'Azure OpenAI',
@@ -230,11 +149,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://www.loom.com/share/4ec3f363d5534b7eb55f9b0b804ec361?sid=eaba42a8-56da-454f-b7ea-c187236fbb24',
     id: 'project-bottega',
-    image: '/projects/restaurant-agent.webp',
-    imageAlt:
-      'A restaurant place setting with a menu and a sculptural soundwave.',
-    summary: 'A voice agent for restaurant menus, orders, and checkout.',
-    category: 'Agents',
     techStack: [
       'React',
       'Twilio',
@@ -253,12 +167,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1iYCLIs7553I11xkgzTnHVHdfGPERA6lj/view?usp=drive_link',
     id: 'project-eylar',
-    image: '/projects/enterprise-rag.webp',
-    imageAlt:
-      'A silver lens selects a source from a sculptural document archive.',
-    summary:
-      'Enterprise document search with retrieval, generation, and source citations.',
-    category: 'Data & AI',
     techStack: ['React', 'LangGraph', 'Qdrant', 'Ollama', 'RAG', 'Docker'],
   },
   {
@@ -269,12 +177,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1PrIoQKUO4N8YIwn-y2EsHkNyfvm8xgDG/view?usp=drive_link',
     id: 'project-genui',
-    image: '/projects/generative-banking.webp',
-    imageAlt:
-      'Modular banking interface panels unfold around a conversation orb.',
-    summary:
-      'An AI conversation that assembles banking interfaces as context changes.',
-    category: 'Applications',
     techStack: ['React', 'LangGraph.js', 'OpenAI', 'Vercel AI SDK', 'Docker'],
   },
   {
@@ -285,12 +187,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1EHut11qbjjMfP9NFr_PehOyNb5ul_bfK/view?usp=drive_link',
     id: 'project-monopoly',
-    image: '/projects/ai-game-arena.webp',
-    imageAlt:
-      'Abstract player tokens gather around a monochrome strategy game.',
-    summary:
-      'Language models trade and negotiate with each other and human players.',
-    category: 'Applications',
     techStack: ['JavaScript', 'OpenAI', 'Anthropic', 'Gemini'],
   },
   {
@@ -301,11 +197,6 @@ export const PROJECTS: Project[] = [
     video:
       'https://drive.google.com/file/d/1m6AdQYB-GxmgYwFx4Fp04wxOTGIfVmyP/view?usp=drive_link',
     id: 'project-etfai',
-    image: '/projects/etf-analytics.webp',
-    imageAlt:
-      'Glass investment baskets contain different groups of geometric assets.',
-    summary: 'Natural-language ETF exploration with interactive charts.',
-    category: 'Data & AI',
     techStack: ['React', 'Snowflake', 'OpenAI', 'Docker'],
   },
 ]
@@ -462,7 +353,7 @@ export const EDUCATION: Education[] = [
   },
   {
     school: 'University of California, Davis',
-    degree: 'B.A. Economics — Econometrics & Quantitative Economics',
+    degree: 'B.S. Computer Science & Quantitative Economics',
     location: 'Davis, CA',
     start: 'September 2019',
     end: 'June 2023',
@@ -470,10 +361,10 @@ export const EDUCATION: Education[] = [
     minors: ['Statistics', 'Technology Management'],
     honors: ["Dean's Scholar (2020-2022)", 'March Fund Award (2022)'],
     coursework: [
-      'Econometrics',
-      'Regression Analysis',
-      'Statistical Data Science',
-      'Game Theory',
+      'Machine Learning',
+      'Database Systems',
+      'Statistical Analysis',
+      'HCI',
     ],
     logo: '/logos/ucdavis.svg',
     id: 'edu2',
@@ -707,7 +598,7 @@ export const RECOGNITION: Recognition[] = [
 
 export const EMAIL = 'thockchomkabeer@gmail.com'
 
-export const LAST_UPDATED = '2026-10-09'
+export const LAST_UPDATED = '2026-08-07'
 
 // Resume-tab PDF: self-hosted download + Google Drive preview.
 export const RESUME_PDF_DOWNLOAD = '/Kabeer_Thockchom_Resume.pdf'
@@ -752,9 +643,7 @@ export function buildKnowledgeBase(): string {
   ).join('\n')
 
   return `About Kabeer Singh Thockchom:
-${PROFILE.name} — ${PROFILE.role}, based in ${PROFILE.location}.
-${PROFILE.summary} ${PROFILE.about} ${PROFILE.perspective}
-Contact: ${EMAIL}.
+Kabeer is part of the Field Engineering team at Databricks (Retail, Travel & Hospitality), based in San Francisco, CA. He has 4+ years of customer-facing AI experience and currently drives greenfield account strategy across 21+ Fortune 500 retail, travel, and hospitality accounts on the Databricks Lakehouse - running technical discovery with C-suite buyers, architecting migrations off Snowflake / BigQuery / Domo / Power BI / AS400, and shipping customer-facing demos and reusable reference assets. He is a hands-on builder of multi-agent platforms, LLM-powered demos, and RAG architectures shipped to 10+ Fortune 500 customers. He was a featured speaker at NVIDIA GTC 2025 and an EY hackathon winner. Contact: ${EMAIL}.
 
 Work Experience:
 ${experience}
@@ -774,8 +663,7 @@ ${certs}
 Recognition & Speaking:
 ${recognition}
 
-Approach:
-${APPROACH.map((step) => `${step.title} ${step.description}`).join('\n')}
+Mission: Bridge the gap between cutting-edge AI technology and practical business solutions, creating products that showcase technical excellence and solve real-world problems.
 
-Personal Interests: ${PROFILE.interests.join(', ')}.`
+Personal Interests: AI/ML, Economics, Product Development/Management, Dogs, Tea, Hiking, Movies. Fascinated by the intersection of AI, business, and human-centered design; believes in building technology that enhances human capabilities rather than replacing them.`
 }

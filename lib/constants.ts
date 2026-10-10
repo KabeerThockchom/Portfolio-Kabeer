@@ -1,1 +1,1 @@
-export const WEBSITE_URL = 'https://www.kabeerthockchom.dev'
+export const WEBSITE_URL = 'https://kabeerthockchom.vercel.app'

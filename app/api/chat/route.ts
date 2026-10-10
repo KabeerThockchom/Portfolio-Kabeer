@@ -6,28 +6,14 @@ import { buildKnowledgeBase } from '@/app/data'
 // editing the site content automatically keeps the chatbot in sync. Built once
 // at module load since the underlying data is static.
 const KABEER_KNOWLEDGE = buildKnowledgeBase()
-export const maxDuration = 20
 
 export async function POST(request: NextRequest) {
   try {
-    let payload: { message?: unknown } | null
-    try {
-      payload = await request.json()
-    } catch {
-      return NextResponse.json(
-        { error: 'Invalid JSON request' },
-        { status: 400 },
-      )
-    }
-    const message = payload?.message
+    const { message } = await request.json()
 
-    if (
-      typeof message !== 'string' ||
-      !message.trim() ||
-      message.length > 2000
-    ) {
+    if (!message) {
       return NextResponse.json(
-        { error: 'Enter a message between 1 and 2000 characters.' },
+        { error: 'Message is required' },
         { status: 400 },
       )
     }
@@ -41,12 +27,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const groq = new Groq({
-      apiKey: process.env.GROQ_API_KEY,
-      timeout: 12_000,
-      maxRetries: 0,
-    })
-    const model = process.env.GROQ_MODEL || 'openai/gpt-oss-120b'
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
     const completion = await groq.chat.completions.create({
       messages: [
@@ -67,36 +48,24 @@ Guidelines:
         },
         {
           role: 'user',
-          content: message.trim(),
+          content: message,
         },
       ],
-      model,
+      model: 'llama-3.3-70b-versatile',
       temperature: 0.3,
-      max_completion_tokens: 1024,
-      ...(model.startsWith('openai/gpt-oss-')
-        ? { reasoning_effort: 'low' as const }
-        : {}),
+      max_tokens: 7000,
     })
 
-    const response = completion.choices[0]?.message?.content?.trim()
-    if (!response) throw new Error('Empty assistant response')
+    const response =
+      completion.choices[0]?.message?.content ||
+      'Sorry, I could not generate a response.'
 
     return NextResponse.json({ response })
   } catch (error) {
-    const upstreamStatus =
-      error instanceof Groq.APIError ? error.status : undefined
-    console.error('Chat API error:', {
-      status: upstreamStatus ?? 'unavailable',
-    })
-    if (upstreamStatus === 429) {
-      return NextResponse.json(
-        { error: 'The assistant is busy. Try again in a minute.' },
-        { status: 429 },
-      )
-    }
+    console.error('Chat API error:', error)
     return NextResponse.json(
-      { error: 'The assistant is temporarily unavailable.' },
-      { status: upstreamStatus === 401 || upstreamStatus === 403 ? 503 : 502 },
+      { error: 'Failed to process chat request' },
+      { status: 500 },
     )
   }
 }
