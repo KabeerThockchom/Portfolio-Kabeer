@@ -5,40 +5,89 @@ import Image from 'next/image'
 import { GithubIcon, LinkedinIcon } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
-type SpotifyTrack = {
-  isPlaying: boolean
-  title?: string
-  artist?: string
-  album?: string
-  albumImageUrl?: string
-  songUrl?: string
-}
+import type { SpotifyState } from '@/lib/spotify'
 
-function HeaderSpotifyWidget() {
-  const [track, setTrack] = useState<SpotifyTrack>({ isPlaying: false })
-  const [loading, setLoading] = useState(true)
+// Both responsive widget views share one request cycle.
+function useSpotifyTrack() {
+  const [track, setTrack] = useState<SpotifyState | null>(null)
 
   useEffect(() => {
-    const fetchNowPlaying = async () => {
+    let active = true
+    let running = false
+    let nextPoll = 0
+    let timer: ReturnType<typeof setTimeout>
+    let controller: AbortController | null = null
+    const pageIsHidden = () => document.visibilityState === 'hidden'
+
+    async function refresh() {
+      if (!active || running || pageIsHidden()) return
+      clearTimeout(timer)
+      if (Date.now() < nextPoll) {
+        timer = setTimeout(refresh, Math.min(nextPoll - Date.now(), 2147483647))
+        return
+      }
+      running = true
+      controller = new AbortController()
+      let delay = 30000
       try {
-        const response = await fetch('/api/spotify')
-        const data = await response.json()
-        setTrack(data)
-      } catch (error) {
-        console.error('Error fetching Spotify data:', error)
-        setTrack({ isPlaying: false })
+        const response = await fetch('/api/spotify', {
+          cache: 'no-store',
+          signal: AbortSignal.any([
+            controller.signal,
+            AbortSignal.timeout(10000),
+          ]),
+        })
+        const data: SpotifyState = await response.json()
+        if (
+          !['playing', 'paused', 'recent', 'idle', 'unavailable'].includes(
+            data.status,
+          )
+        )
+          throw new Error('Invalid Spotify response')
+        if (active) setTrack(data)
+        if (data.status === 'unavailable') {
+          const retryAfter = Number(data.retryAfter)
+          delay =
+            Number.isFinite(retryAfter) && retryAfter > 0
+              ? Math.max(30000, retryAfter * 1000)
+              : 60000
+        }
+      } catch {
+        if (active)
+          setTrack({
+            status: 'unavailable',
+            isPlaying: false,
+            reason: 'service',
+            retryAfter: 60,
+          })
+        delay = 60000
       } finally {
-        setLoading(false)
+        running = false
+        nextPoll = Date.now() + delay
+        if (active && !pageIsHidden())
+          timer = setTimeout(refresh, Math.min(delay, 2147483647))
       }
     }
 
-    fetchNowPlaying()
-    // Refresh every 30 seconds
-    const interval = setInterval(fetchNowPlaying, 30000)
-
-    return () => clearInterval(interval)
+    function visibilityChanged() {
+      if (pageIsHidden()) clearTimeout(timer)
+      else void refresh()
+    }
+    void refresh()
+    document.addEventListener('visibilitychange', visibilityChanged)
+    return () => {
+      active = false
+      clearTimeout(timer)
+      controller?.abort()
+      document.removeEventListener('visibilitychange', visibilityChanged)
+    }
   }, [])
 
+  return track
+}
+
+function HeaderSpotifyWidget({ track }: { track: SpotifyState | null }) {
+  const loading = !track
   if (loading) {
     return (
       <div className="flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/80">
@@ -48,7 +97,7 @@ function HeaderSpotifyWidget() {
     )
   }
 
-  if (!track.isPlaying && !track.title) {
+  if (!track || !('title' in track)) {
     return (
       <div className="flex items-center space-x-2 rounded-lg border border-zinc-200 bg-white/80 px-2 py-1.5 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/80">
         <div className="flex h-6 w-6 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800">
@@ -61,7 +110,9 @@ function HeaderSpotifyWidget() {
           </svg>
         </div>
         <span className="text-xs text-zinc-500 dark:text-zinc-400">
-          Currently listening to nothing
+          {track?.status === 'unavailable'
+            ? 'Spotify unavailable'
+            : 'Not playing'}
         </span>
       </div>
     )
@@ -94,7 +145,11 @@ function HeaderSpotifyWidget() {
       )}
       <div className="flex min-w-0 flex-col">
         <span className="text-xs text-zinc-500 dark:text-zinc-400">
-          Currently listening to
+          {track.status === 'playing'
+            ? 'Currently listening to'
+            : track.status === 'paused'
+              ? 'Paused on Spotify'
+              : 'Last played on Spotify'}
         </span>
         <div className="flex items-center space-x-1">
           {track.isPlaying && (
@@ -130,6 +185,8 @@ function HeaderSpotifyWidget() {
 }
 
 export function Header() {
+  const track = useSpotifyTrack()
+
   return (
     <header className="mb-6 sm:mb-8">
       {/* Mobile Layout: Centered Stack */}
@@ -181,7 +238,7 @@ export function Header() {
                 <LinkedinIcon size={24} />
               </a>
             </div>
-            <HeaderSpotifyWidget />
+            <HeaderSpotifyWidget track={track} />
           </div>
         </div>
       </div>
@@ -236,7 +293,7 @@ export function Header() {
                   <LinkedinIcon size={28} />
                 </a>
               </div>
-              <HeaderSpotifyWidget />
+              <HeaderSpotifyWidget track={track} />
             </div>
           </div>
         </div>
