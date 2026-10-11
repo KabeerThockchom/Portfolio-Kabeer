@@ -474,6 +474,13 @@ export const SKILLS: Skill[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: "What is Genie, Databricks' AI coworker?",
+    description:
+      'Genie is a family of AI coworkers, one for each persona on a data team - how Genie One, Genie Code, and Genie Agents work together.',
+    link: 'https://medium.com/@thockchomkabeer/what-is-genie-databricks-ai-coworker-how-genie-one-genie-code-and-genie-agents-work-together-b57dd6a8aeae',
+    uid: 'blog-genie-ai-coworker',
+  },
+  {
     title: "Every AI Agent Needs a Database. Most of Them Don't Know It Yet.",
     description:
       'Why AI agents need persistent database infrastructure - with branching and governance - to support dev sandboxes, production, A/B testing, and RL training loops.',
